@@ -1,0 +1,55 @@
+---
+import { SHORT_TITLE, SITE_DESCRIPTION, FACEBOOK, TWITTER, INSTAGRAM, LINKEDIN, GITHUB, FULL_TITLE } from '@consts/consts';
+import { Icon } from '@nodes/astro-icon/components';
+
+import Menu from '@comps/menu.astro';
+---
+<div class="navbar bg-gradient-to-r from-primary/50 to-secondary/80 backdrop-blur-sm fixed left-0 right-0 mx-auto duration-500">
+    <div class="navbar-start">
+      <div class="dropdown">
+        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+        </div>
+        <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+          <Menu />
+        </ul>
+      </div>
+      <h3 class="ms-4 text-2xl font-outfit font-bold stroke-text text-base-100">{SHORT_TITLE}</h3>
+    </div>
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1 [&>li]:mx-2">
+          <Menu />
+      </ul>
+    </div>
+    <div class="navbar-end me-4">
+      <a class="btn bg-base-100 border-2 border-secondary text-primary hover:bg-secondary hover:text-base-100 hover:border-primary transition duration-500 ">
+        Download CV
+        <Icon name="downloadloop" class="w-6 h-auto" />
+    </a>
+    </div>
+</div>
+
+<style is:global>
+    .stroke-text {
+        --tw-text-opacity: 1;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: var(--tw-text-primary);
+  }
+</style>
+
+<script>
+    const updateNavbarStyle = () => {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            if (window.scrollY > 50) {
+                navbar.classList.add('w-[98%]', 'rounded-full', 'mt-4');
+            } else {
+                navbar.classList.remove('w-[98%]', 'rounded-full', 'mt-4');
+            }
+        }
+    };
+
+    window.addEventListener('scroll', updateNavbarStyle);
+    updateNavbarStyle(); // Initial check in case the page is loaded in the middle
+</script>
