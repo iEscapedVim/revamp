@@ -11,7 +11,7 @@ const day = date.getDate();
 const formattedDate = `${day} ${month}`;
 ---
 
-<a href={`/projects/${post.slug}/`} class="group bg-gradient-to-t from-primary to-secondary hover:from-primary/90 hover:to-secondary relative rounded-2xl border" data-aos="fade-up" data-aos-duration="1000">
+<a href={`/projects/${post.slug}/`} class="group bg-gradient-to-t from-primary to-secondary hover:from-primary/90 hover:to-secondary relative rounded-2xl border" data-aos="fade-up" data-aos-duration="1000" transition:name={title}>
   <div class='relative p-2 text-white'>
     <div class='p-2'>
       <Image  src={image} alt={imagealt} class="rounded-2xl "/>

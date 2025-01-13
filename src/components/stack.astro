@@ -1,0 +1,16 @@
+---
+import List from '@comps/list.astro';
+---
+<div class="pt-32 px-12">
+    <span class='-mb-12 inline-block text-md p-1 px-3 w-fit rounded-full text-white font-bold bg-gradient-to-t from-primary/80 to-secondary/80 border-2 border-secondary'>
+        My Digital Arsenal
+    </span>
+    <div class='w-full text-5xl inline-flex flex-nowrap overflow-hidden'>
+        <ul class='flex h-[160px] items-center justify-center md:justify-start sm:[&_li]:mx-8 [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll'>
+            <List />
+        </ul>
+        <ul class="flex h-[160px] items-center justify-center md:justify-start sm:[&_li]:mx-8 [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
+            <List />
+        </ul>
+    </div>
+</div>

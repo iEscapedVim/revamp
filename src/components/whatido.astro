@@ -3,6 +3,7 @@ import WhatCard from '@comps/whatcard.astro'
 import { Image } from 'astro:assets'
 import car from '@assets/cat.png';
 import { Icon } from '@nodes/astro-icon/components';
+import Stack from './stack.astro';
 ---
 <section class="grid grid-cols-1 gap-5 md:gap-0 md:grid-cols-7 h-screen py-24 justify-start items-start px-6">
     <div class="col-span-2 flex flex-col justify-start items-start" data-aos="fade-right" data-aos-duration="1000">
@@ -22,3 +23,6 @@ import { Icon } from '@nodes/astro-icon/components';
         <WhatCard dataAOS="fade-left" DaDuration="1800" number="04" iconname="bug" title="Bug Fixes & Speed Optimization" description="Enhancing website performance through comprehensive bug fixes and speed optimization." />
     </div>
 </section>
+<div class="w-full">
+    <Stack />
+</div>
