@@ -1,7 +1,11 @@
 ---
 import { NAME } from '@consts/consts';
 import Name from '@comps/name.jsx'
+import { Image } from 'astro:assets';
+
+import Me from '@assets/me.png';
 ---
-<section class="flex flex-col justify-center items-center h-screen py-96">
-   <Name /> 
+<section class="flex flex-col justify-center items-center h-screen py-96 relative">
+   <Name client:load /> 
+   <Image src={Me} alt={NAME} class="absolute top-24 mx-auto w-96 bg-gradient-to-b from-primary/70 to-secondary/60 h-auto rounded-full mt-12 backdrop-blur-[2px]" />
 </section>
