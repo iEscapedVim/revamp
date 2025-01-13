@@ -1,0 +1,26 @@
+---
+import Head from "@comps/head.astro"
+import Mcan from '@comps/mcan.tsx';
+import { Image } from "astro:assets";
+import Lost from '@assets/lost.svg';
+---
+<!doctype html>
+<html lang="en">
+	<Head sitetitle="Woopss!" />
+	<body class="bg-base-100">
+		<Mcan client:load />
+        <section class="px-12 flex flex-row justify-center items-center w-full h-screen">
+            <Image src={Lost} alt="404" class="w-full h-full" />
+            <div class="flex flex-col">
+                <h1 class="font-bold text-primary text-4xl">
+                    Oops!, Looks like you are lost..
+                </h1>
+                <p class="text-gray-600">The page you looking for either never existed or was deleted, or you just made a typo. Anyway click the button below to get back on track or notify me.</p>
+                <div class="flex flex-row gap-3 mt-5 mx-auto">
+                    <a href="/" class="btn bg-primary text-white hover:bg-secondary hover:text-black">Go Home</a>
+                    <a href="mailto:info@iescapedvim.com" class="btn bg-secondary hover:bg-primary hover:text-white">Contact Me</a>
+                </div>
+            </div>
+        </section>
+	</body>
+</html>

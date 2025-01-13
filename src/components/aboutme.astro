@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets'
+import { NAME } from '@consts/consts';
+import Me from '@assets/me.png';
+import Name from '@comps/name.jsx'
+---
+<section class='flex flex-col justify-center items-center relative pt-52 pb-24'>
+    <div class="absolute grid grid-cols-7 w-full h-fit px-12 justify-center items-center z-10 gap-3">
+        <Image loading="eager" src={Me} alt={"Me, " + NAME} class="col-span-2 w-44 md:w-96 bg-gradient-to-b from-primary/70 to-secondary/60 h-auto rounded-full backdrop-blur-[2px]" transition:name='me' />
+        <div class="relative bg-base-100/30 backdrop-blur-sm text-start px-12 w-fit h-full col-span-5" transition:name="aboutme">
+            <h2 class='font-outfit font-bold text-4xl md:text-5xl text-neutral lg:text-6xl mt-2'>About <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Me</span></h2>
+            <div class='text-xl font-medium pt-2 text-neutral flex flex-col gap-5'>   
+                <span>
+                    I'm a seasoned web developer and technical project lead with over 8 years of experience in crafting visually compelling, responsive, & functionally robust websites.
+                    Outside of work, I enjoy cooking/exploring new recipes, some photography, watching anime/discovering new series, & spending time with my feline friends.
+                </span>
+                    <ul class="text-lg font-medium list-disc ms-4 marker:text-secondary text-neutral">
+                        <li>
+                            Proficient in HTML5, CSS3, Bootstrap, JavaScript, TailwindCSS, and CMS platforms
+                        </li>
+                        <li>
+                            Skilled in LAMP stack for server-side development and deployment
+                        </li>
+                        <li>
+                            Proven ability to lead cross-functional teams and deliver high-quality projects
+                        </li>
+                        <li>
+                            Passionate about crafting visually stunning, responsive, and user-friendly websites
+                        </li>
+                    </ul>
+                <span>
+                    Let's build your digital future together.
+                </span>
+            </div>
+        </div>
+    </div>
+    <Name client:load transition:name='name' /> 
+</section>

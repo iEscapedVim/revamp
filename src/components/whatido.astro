@@ -1,0 +1,24 @@
+---
+import WhatCard from '@comps/whatcard.astro'
+import { Image } from 'astro:assets'
+import car from '@assets/cat.png';
+import { Icon } from '@nodes/astro-icon/components';
+---
+<section class="grid grid-cols-1 gap-5 md:gap-0 md:grid-cols-7 h-screen py-24 justify-start items-start px-6">
+    <div class="col-span-2 flex flex-col justify-start items-start" data-aos="fade-right" data-aos-duration="1000">
+        <span class='inline-block text-md p-1 px-3 w-fit rounded-full text-white font-bold bg-gradient-to-t from-primary/80 to-secondary/80 border-2 border-secondary'>
+            Services
+        </span>
+        <h2 data-aos="fade-right" data-aos-duration="1100" class="font-outfit font-bold text-4xl md:text-5xl lg:text-6xl text-neutral mt-2">What I <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Do</span></h2>
+        <div class="flex flex-col self-center py-24" data-aos="fade-right" data-aos-duration="1200">
+            <Image src={car} alt="Cat Image From Freepik" class="w-3/4" />
+            <p class="text-primary capitalize mt-3 text-md font-bold flex flex-row justify-center items-center">I love cats <Icon name="heart" class="text-secondary w-6 h-auto" /></p>
+        </div>
+    </div>
+    <div class="col-span-5 flex flex-col gap-3">
+        <WhatCard dataAOS="fade-left" DaDuration="1000" number="01" iconname="design" title="Web Design" description="Delivering cutting-edge, professional-grade designs that are visually appealing and functional." />
+        <WhatCard dataAOS="fade-left" DaDuration="1300" number="02" iconname="dev" title="Web Development" description="Developing high-performance, scale websites with a focus on quality and precision." />
+        <WhatCard dataAOS="fade-left" DaDuration="1500" number="03" iconname="lamp" title="LAMPP Server Management" description="Expert management and configuration of LAMPP servers to ensure optimal performance." />
+        <WhatCard dataAOS="fade-left" DaDuration="1800" number="04" iconname="bug" title="Bug Fixes & Speed Optimization" description="Enhancing website performance through comprehensive bug fixes and speed optimization." />
+    </div>
+</section>

@@ -1,40 +1,22 @@
 ---
 import { SHORT_TITLE } from "@consts/consts";
-import { Icon } from "astro-icon/components";
 import Resume from "@comps/core/resume.jsx";
 import Menu from "@comps/menu.astro";
 ---
 
-<div
-    class="z-[999] navbar bg-gradient-to-r from-primary/50 to-secondary/80 backdrop-blur-sm fixed left-0 right-0 mx-auto duration-500"
->
+<div class="z-[999] navbar bg-gradient-to-r from-primary/50 to-secondary/80 backdrop-blur-sm fixed left-0 right-0 mx-auto duration-500 shadow-xl shadow-secondary/40">
     <div class="navbar-start">
         <div class="dropdown">
-            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M4 6h16M4 12h8m-8 6h16"></path>
+            <div tabindex="-1" role="button" class="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
                 </svg>
             </div>
-            <ul
-                tabindex="0"
-                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
+            <ul class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                 <Menu />
             </ul>
         </div>
-        <h3
-            class="ms-4 text-2xl font-outfit font-bold stroke-text text-base-100"
-        >
+        <h3 class="ms-4 text-2xl font-outfit font-bold stroke-text text-base-100" >
             {SHORT_TITLE}
         </h3>
     </div>
@@ -48,32 +30,14 @@ import Menu from "@comps/menu.astro";
     </div>
 </div>
 
-<style is:global>
-    .stroke-text {
-        --tw-text-opacity: 1;
-        -webkit-text-fill-color: transparent;
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: var(--tw-text-primary);
-    }
-
-    .unselectable {
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-</style>
-
 <script>
     const updateNavbarStyle = () => {
         const navbar = document.querySelector(".navbar");
         if (navbar) {
             if (window.scrollY > 50) {
-                navbar.classList.add("w-[98%]", "rounded-full", "mt-4");
+                navbar.classList.add("w-[98%]", "rounded-full", "mt-4", "border-2", "border-primary");
             } else {
-                navbar.classList.remove("w-[98%]", "rounded-full", "mt-4");
+                navbar.classList.remove("w-[98%]", "rounded-full", "mt-4", "border-2", "border-primary");
             }
         }
     };
