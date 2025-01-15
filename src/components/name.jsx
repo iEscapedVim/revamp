@@ -3,6 +3,13 @@ import ScrollBaseAnimation from '@comps/core/marquee.tsx';
 import { NAME, FULL_TITLE } from '@consts/consts';
 
 const randomCodeSnippets = [
+  "const greet = (name) => console.log(`Hello, ${name}!`);",
+  "function multiply(x, y) { return x * y; }",
+  "const fibonacci = n => (n <= 1 ? n : fibonacci(n - 1) + fibonacci(n - 2));",
+  "let index = 0; do { index++; } while (index < 3);",
+  "const E = 2.71828; const x = 2; const exp = Math.pow(E, x);",
+  "const isEven = num => num % 2 === 0;",
+  "const randomBoolean = () => Math.random() >= 0.5;",
   "const helloWorld = () => console.log('Hello, world!');",
   "function sum(a, b) { return a + b; }",
   "const factorial = n => (n <= 1 ? 1 : n * factorial(n - 1));",
