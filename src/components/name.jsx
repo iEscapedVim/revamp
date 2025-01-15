@@ -1,6 +1,5 @@
 import React from 'react';
 import ScrollBaseAnimation from '@comps/core/marquee.tsx';
-import { NAME, FULL_TITLE } from '@consts/consts';
 
 const randomCodeSnippets = [
   "const greet = (name) => console.log(`Hello, ${name}!`);",
