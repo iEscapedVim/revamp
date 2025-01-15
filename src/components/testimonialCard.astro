@@ -1,0 +1,29 @@
+---
+import { Icon } from "@nodes/astro-icon/components"
+import { Image } from "astro:assets";
+const { reviews } = Astro.props;
+const {cname, headshot, message} = reviews.data;
+---
+<div class="mb-8 sm:break-inside-avoid" data-aos="fade-up" data-aos-duration="600">
+    <blockquote class="rounded-lg bg-gray-50/60 backdrop-blur-[2px] p-6 shadow-lg sm:p-8">
+      <div class="flex items-center gap-4">
+        <div class="p-2 bg-gradient-to-r from-primary/50 to-secondary/70 rounded-full">
+          <Image src={headshot} alt={"This is "+cname} class="size-16" />
+        </div>
+        <div>
+          <div class="flex justify-center gap-0.5 text-secondary">
+              <Icon name="star" class="w-4 h-auto" />
+              <Icon name="star" class="w-4 h-auto" />
+              <Icon name="star" class="w-4 h-auto" />
+              <Icon name="star" class="w-4 h-auto" />
+              <Icon name="star" class="w-4 h-auto" />
+          </div>
+          <p class="mt-0.5 text-lg font-medium text-gray-900 capitalize">{cname}</p>
+        </div>
+      </div>
+
+      <p class="mt-4 text-gray-700">
+        {message}
+      </p>
+    </blockquote>
+  </div>

@@ -26,35 +26,14 @@ const blog = defineCollection({
     })
 });
 
-const policies = defineCollection({
-    type: 'content',
-    schema: ({ image }) => z.object({
-      title: z.string(),
-      pubDate: z.date(),
-	  lastUpdated: z.date(),
-      image: image(),
-	  imagealt: z.string(),
-    })
-});
-
-const clients = defineCollection ({
-	type: "content",
-	schema: ({image}) => z.object ({
-		headshot: image().optional(),
-		clientname: z.string(),
-		country: z.string().optional(),
-	}),
-});
-
 const testimonials = defineCollection({
 	type: "content",
     schema: ({image}) => 
 	z.object({
-		clientref: z.string(reference("clients")).optional(),
+        cname: z.string(),
 		message: z.string(),
-		project: z.string().optional(),
-		rating: z.string().optional(),
+		headshot: image().optional(),
     }),
 });
 
-export const collections = {blog, policies, projects, testimonials, clients};
+export const collections = {blog, projects, testimonials};
