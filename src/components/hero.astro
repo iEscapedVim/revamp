@@ -3,8 +3,57 @@ import Name from '@comps/name.jsx'
 import { Image } from 'astro:assets'
 import { NAME } from '@consts/consts';
 import Me from '@assets/me.png';
+import { Icon } from '@nodes/astro-icon/components';
+import Touch from './touch.astro';
 ---
-<section class='relative h-[500] flex w-full pt-52 pb-32 justify-center items-center'>
-    <Image loading="eager" src={Me} alt={"Me, " + NAME} class="absolute z-10 w-44 md:w-96 bg-gradient-to-b from-primary/70 to-secondary/60 h-auto rounded-full backdrop-blur-[2px]"  transition:name='me'/>
+<section class='relative h-[500] flex flex-col w-full py-24 justify-center items-center'>
+    <h1 class="unselectable font-bold stroke-text text-7xl uppercase -mb-12 text-primary">{NAME}</h1>
+    <div class="grid z-10 grid-cols-9 w-full h-fit px-12 justify-center items-center gap-6">
+        <div class="col-span-3 flex flex-col gap-3 justify-start items-center mt-20 backdrop-blur-[2px]" transition:name="aboutme">
+            <div data-aos="fade-up" data-aos-duration="500" class="w-full flex flex-col gap-3 bg-gradient-to-r from-primary/80 to-secondary/90 py-3 px-6 rounded-lg backdrop-blur-lg border-2 border-gray-300">
+                <h3 class="text-white text-2xl font-bold">
+                    About Me
+                </h3>
+                <p class="text-white text-sm font-medium">
+                    I'm a seasoned web developer and technical project lead with over 8 years of experience in crafting visually compelling, responsive, & functionally robust websites.
+                </p>
+            </div>
+            <div data-aos="fade-up" data-aos-duration="800" class="w-full flex flex-col gap-3 bg-gradient-to-r from-primary/80 to-secondary/90 py-3 px-6 rounded-lg border-2 border-gray-300">
+            <h3 class="text-white text-2xl font-bold">
+                Connect
+            </h3>
+            <span class="text-white text-3xl font-bold flex flex-row gap-3">
+                <Touch />
+            </span>
+            </div>
+        </div>
+        <Image loading="eager" src={Me} alt={"Me, " + NAME} class="col-span-3 w-44 md:w-96 bg-gradient-to-b from-primary/70 to-secondary/60 h-auto rounded-full backdrop-blur-[2px]"  transition:name='me'/>
+        <div id="stats" class="col-span-3 flex flex-col gap-3 justify-start items-center mt-44 backdrop-blur-[2px]">
+            <div data-aos-anchor="#stats" data-aos="fade-up" data-aos-duration="500" class="w-full flex flex-col gap-3 bg-gradient-to-r from-primary/80 to-secondary/90 py-3 px-6 rounded-lg border-2 border-gray-300">
+                <h3 class="text-white text-2xl font-bold">
+                    Project Done
+                </h3>
+                <h5 class="text-white text-3xl font-bold">
+                    437
+                </h5>
+            </div>
+            <div data-aos-anchor="#stats" data-aos="fade-up" data-aos-duration="800" class="w-full flex flex-col gap-3 bg-gradient-to-r from-primary/80 to-secondary/90 py-3 px-6 rounded-lg  border-2 border-gray-300">
+                <h3 class="text-white text-2xl font-bold">
+                    Years of Experience
+                </h3>
+                <h5 class="text-white text-3xl font-bold">
+                    8+
+                </h5>
+            </div>
+            <div data-aos-anchor="#stats" data-aos="fade-up" data-aos-duration="1100" class="w-full flex flex-col gap-3 bg-gradient-to-r from-primary/80 to-secondary/90 py-3 px-6 rounded-lg border-2 border-gray-300">
+                <h3 class="text-white text-2xl font-bold">
+                    Clients WorldWide
+                </h3>
+                <h5 class="text-white text-3xl font-bold">
+                    300+
+                </h5>
+            </div>
+        </div>
+    </div>
     <Name client:load  transition:name='name' /> 
 </section>

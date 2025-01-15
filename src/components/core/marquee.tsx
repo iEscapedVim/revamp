@@ -22,7 +22,7 @@ interface ParallaxProps {
 
 export default function ScrollBaseAnimation({
   children,
-  baseVelocity = -5,
+  baseVelocity = -1,
   clasname,
   scrollDependent = false, // Default to false
   delay = 0, // Default delay is 0 (no delay)
@@ -72,14 +72,11 @@ export default function ScrollBaseAnimation({
 
   return (
     <div className='overflow-hidden whitespace-nowrap flex flex-nowrap'>
-      <motion.div
-        className='flex whitespace-nowrap gap-10 flex-nowrap'
-        style={{ x }}
-      >
-        <span className={cn(`block text-[8vw]`, clasname)}>{children}</span>
-        <span className={cn(`block text-[8vw]`, clasname)}>{children}</span>
-        <span className={cn(`block text-[8vw]`, clasname)}>{children}</span>
-        <span className={cn(`block text-[8vw]`, clasname)}>{children}</span>
+      <motion.div className='flex whitespace-nowrap gap-10 flex-nowrap' style={{ x }} >
+        <span className={cn(`block text-[6vw]`, clasname)}>{children}</span>
+        <span className={cn(`block text-[6vw]`, clasname)}>{children}</span>
+        <span className={cn(`block text-[6vw]`, clasname)}>{children}</span>
+        <span className={cn(`block text-[6vw]`, clasname)}>{children}</span>
       </motion.div>
     </div>
   );

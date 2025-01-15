@@ -3,9 +3,11 @@ import { Image } from 'astro:assets'
 import { NAME } from '@consts/consts';
 import Me from '@assets/me.png';
 import Name from '@comps/name.jsx'
+import { Icon } from '@nodes/astro-icon/components';
+import Touch from './touch.astro';
 ---
-<section class='flex flex-col justify-center items-center relative pt-52 pb-24'>
-    <div class="absolute grid grid-cols-7 w-full h-fit px-12 justify-center items-center z-10 gap-3">
+<section class='flex flex-col justify-center items-center relative py-24'>
+    <div class="grid grid-cols-7 w-full h-fit px-12 justify-center items-center z-10 gap-3">
         <Image loading="eager" src={Me} alt={"Me, " + NAME} class="col-span-2 w-44 md:w-96 bg-gradient-to-b from-primary/70 to-secondary/60 h-auto rounded-full backdrop-blur-[2px]" transition:name='me' />
         <div class="relative bg-base-100/30 backdrop-blur-sm text-start px-12 w-fit h-full col-span-5" transition:name="aboutme">
             <h2 class='font-outfit font-bold text-4xl md:text-5xl text-neutral lg:text-6xl mt-2'>About <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Me</span></h2>
@@ -30,6 +32,9 @@ import Name from '@comps/name.jsx'
                     </ul>
                 <span>
                     Let's build your digital future together.
+                </span>
+                <span class="text-primary text-3xl font-bold flex flex-row gap-3">
+                    <Touch />
                 </span>
             </div>
         </div>

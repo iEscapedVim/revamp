@@ -1,0 +1,14 @@
+---
+const { year, title, description, dataaos, aosduration } = Astro.props;
+---
+<li class="group relative flex flex-col pb-8 pl-7 last:pb-0">
+    <div class="absolute bottom-0 left-[calc(0.53rem-0.5px)] top-0 w-px bg-black group-first:top-3"></div>
+    <div class="absolute left-0 top-2 h-4 w-4 rounded-full border border-primary bg-secondary"></div>
+    <div class="mt-2 bg-gradient-to-r from-primary/80 to-secondary/80 py-2 px-4 rounded-lg" data-aos={dataaos} data-aos-duration={aosduration}>
+        <h3 class="text-xl font-semibold text-white">{title}</h3>
+        <p class="font-display text-2xs/6 order-first font-semibold tracking-[0.2em] text-white">
+            {year}
+        </p>
+        <p class="mt-0.5 text-sm/6 text-white">{description}</p>
+    </div>
+</li>
