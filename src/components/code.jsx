@@ -22,7 +22,7 @@ function getRandomCode() {
 }
 function index() {
   return (
-      <div className='grid place-content-center absolute mt-20'>
+      <div className='grid place-content-center absolute md:mt-20 -mt-[550px]'>
         <ScrollBaseAnimation delay={500} baseVelocity={-3} clasname='unselectable font-bold text-primary stroke-text tracking-[-0.07em] leading-[90%] my-3'>
           {getRandomCode()}
         </ScrollBaseAnimation>

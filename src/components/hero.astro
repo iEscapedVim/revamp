@@ -6,9 +6,9 @@ import Me from '@assets/me.png';
 import Touch from './touch.astro';
 ---
 <section class='relative h-[500] flex flex-col w-full py-24 justify-center items-center'>
-    <h1 class="unselectable font-bold stroke-text text-7xl uppercase -mb-12 text-primary">{NAME}</h1>
-    <div class="grid z-10 grid-cols-9 w-full h-fit px-12 justify-center items-center gap-6">
-        <div class="col-span-3 flex flex-col gap-3 justify-start items-center mt-20 backdrop-blur-[2px]" transition:name="aboutme">
+    <h1 class="unselectable font-bold stroke-text mx-auto text-6xl md:text-7xl uppercase mb-4 md:-mb-12 text-primary text-center w-full">{NAME}</h1>
+    <div class="grid grid-cols-1 md:grid-cols-9 z-10 w-full h-fit px-12 justify-center items-center gap-6">
+        <div class="order-2 md:order-1 col-span-3 flex flex-col gap-3 justify-start items-center md:mt-20 backdrop-blur-[2px]" transition:name="aboutme">
             <div data-aos="fade-up" data-aos-duration="500" class="w-full flex flex-col gap-3 bg-gradient-to-r from-primary/80 to-secondary/90 py-3 px-6 rounded-lg backdrop-blur-lg border-2 border-gray-300">
                 <h3 class="text-white text-2xl font-bold">
                     About Me
@@ -26,8 +26,8 @@ import Touch from './touch.astro';
             </span>
             </div>
         </div>
-        <Image loading="eager" src={Me} alt={"Me, " + NAME} class="col-span-3 w-44 md:w-96 bg-gradient-to-b from-primary/70 to-secondary/60 h-auto rounded-full backdrop-blur-[2px]"  transition:name='me'/>
-        <div id="stats" class="col-span-3 flex flex-col gap-3 justify-start items-center mt-44 backdrop-blur-[2px]">
+        <Image loading="eager" src={Me} alt={"Me, " + NAME} class="order-1 md:order-2 col-span-3 w-64 mx-auto md:w-96 bg-gradient-to-b from-primary/70 to-secondary/60 h-auto rounded-full backdrop-blur-[2px]"  transition:name='me'/>
+        <div id="stats" class="order-3 col-span-3 flex flex-col gap-3 justify-start items-center md:mt-44 backdrop-blur-[2px]">
             <div data-aos-anchor="#stats" data-aos="fade-up" data-aos-duration="500" class="w-full flex flex-col gap-3 bg-gradient-to-r from-primary/80 to-secondary/90 py-3 px-6 rounded-lg border-2 border-gray-300">
                 <h3 class="text-white text-2xl font-bold">
                     Project Done
