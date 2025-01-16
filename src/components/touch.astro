@@ -1,12 +1,13 @@
 ---
 import { Icon } from "@nodes/astro-icon/components"
+import { GITHUB, EMAIL, PHONE  } from '@consts/consts';
 ---
-<a href="mailto:info@iescapedvim.com">
+<a href={"mailto:"+EMAIL} aria-label={"Send Me An Email at "+EMAIL}>
     <Icon name="social/email" class="w-8 h-auto" />
 </a>
-<a href="https://github.com/iEscapedVim">
+<a href={GITHUB} aria-label="My Github Account">
     <Icon name="social/github" class="w-8 h-auto" />
 </a>
-<a href="https://wa.me/+923117375069">
+<a href={"https://wa.me/"+PHONE} aria-label="Connect Me on Whatsapp">
     <Icon name="social/phone" class="w-8 h-auto" />
 </a>

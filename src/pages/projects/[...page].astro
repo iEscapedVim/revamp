@@ -22,4 +22,5 @@ const { page }: any = Astro.props;
             {page.data.sort((a: { data: { pubDate: string | number | Date; }; }, b: { data: { pubDate: string | number | Date; }; }) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()).map((p: any) => <RecentCard post={p}/>)}
         </div>
     </section>
+    <div class="pt-12"></div>
 </Layout>

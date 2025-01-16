@@ -1,4 +1,5 @@
 ---
+const { frontmatter } = Astro.props;
 import Head from "@comps/head.astro"
 import Header from "@comps/header.astro"
 import Footer from "@comps/footer.astro"
@@ -7,11 +8,13 @@ import { NAME } from '@consts/consts';
 ---
 <!doctype html>
 <html lang="en" class="overflow-x-hidden">
-	<Head sitetitle={NAME} />
+	<Head sitetitle={frontmatter.title} />
 	<body class="bg-base-100">
 		<Mcan client:load />
 		<Header />
-		<slot />
+		    <section class="pt-24 grid grid-cols-1 md:grid-cols-8 px-6 gap-8">
+                <slot />
+            </section>
 		<Footer />
 	</body>
 </html>
