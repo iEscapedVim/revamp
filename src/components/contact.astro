@@ -6,30 +6,30 @@ import Touch from "./touch.astro"
         <h2 data-aos="fade-right" data-aos-duration="1100" class="font-outfit pb-8 font-bold text-4xl md:text-5xl lg:text-6xl text-neutral mt-2">Contact <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Me</span></h2>
       <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
         <div class="rounded-lg bg-white/60 p-8 shadow-lg lg:col-span-3 lg:p-12 z-10 backdrop-blur-[2px]" data-aos="fade-up" data-aos-duration="800">
-          <form action="#" class="space-y-4">
+          <form action="https://formsubmit.co/info@iescapedvim.com" method="POST" class="space-y-4">
             <p class="font-bold text-primary">
               Fill This Form & I'll Get Back To You Asap
             </p>
             <div>
               <label class="sr-only" for="name">Name</label>
-              <input class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Name" type="text" id="name" />
+              <input class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Name" type="text" name="name" />
             </div>
   
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label class="sr-only" for="email">Email</label>
-                <input class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Email address" type="email" id="email" />
+                <input class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Email address" type="email" name="email" />
               </div>
   
               <div>
                 <label class="sr-only" for="phone">Phone</label>
-                <input class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Phone Number" type="tel" id="phone" />
+                <input class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Phone Number" type="tel" name="phone" />
               </div>
             </div>
   
             <div>
               <label class="sr-only" for="message">Message</label>
-              <textarea class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Message" rows="8" id="message" ></textarea>
+              <textarea class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Message" rows="8" name="message" ></textarea>
             </div>
   
             <div class="mt-4">
