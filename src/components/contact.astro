@@ -31,6 +31,8 @@ import Touch from "./touch.astro"
               <label class="sr-only" for="message">Message</label>
               <textarea class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Message" rows="8" name="message" ></textarea>
             </div>
+
+            <input type="hidden" name="_next" value="https://new.iescapedvim.com/#contact">
   
             <div class="mt-4">
               <button type="submit" class="inline-block w-full rounded-lg bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 border-2 border-gray-300 font-bold px-5 py-3 text-white sm:w-auto" >
@@ -48,7 +50,32 @@ import Touch from "./touch.astro"
             <span class="text-primary flex flex-row">
               <Touch />
             </span>
+            <div id="contact"></div>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.location.hash === '#contact') {
+        const contactDiv = document.getElementById('contact');
+        if (contactDiv) {
+          const alertDiv = document.createElement('div');
+          alertDiv.setAttribute('role', 'alert');
+          alertDiv.className = 'alert bg-secondary text-white font-medium mt-4';
+          alertDiv.setAttribute('data-aos', 'fade-up');
+          alertDiv.setAttribute('data-aos-duration', '1000');
+          alertDiv.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>
+              Message Received. I'll get back to you as soon as possible.
+            </span>
+          `;
+          contactDiv.appendChild(alertDiv);
+        }
+      }
+    });
+  </script>
