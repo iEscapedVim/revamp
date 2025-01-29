@@ -11,6 +11,8 @@ export async function getStaticPaths({ paginate }: { paginate: (posts: any[], op
 }
 
 const { page }: any = Astro.props;
+
+import Contact from '@comps/contact.astro';
 ---
 
 <Layout>
@@ -23,4 +25,5 @@ const { page }: any = Astro.props;
         </div>
     </section>
     <div class="pt-12"></div>
+    <Contact />
 </Layout>
