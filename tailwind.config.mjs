@@ -17,7 +17,8 @@ export default {
 	// add my own theme colors to daisyui
 	daisyui: {
 		themes: [
-		{mytheme: {
+		{
+			mytheme: {
 			"primary": "#041e42",	
 			"secondary": "#9067c6",
 			"accent": "#c0c0c0",
@@ -27,7 +28,8 @@ export default {
 			"success": "#4ade80",
 			"warning": "#fbbf24",
 			"error": "#f87171",
-		},},
+			},
+		},
 		],
 	},
 	plugins: [
