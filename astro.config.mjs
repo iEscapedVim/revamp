@@ -6,7 +6,9 @@ import tailwind from '@astrojs/tailwind';
 
 import mdx from '@astrojs/mdx';
 
+import customToc from 'astro-custom-toc';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), icon(), tailwind(), mdx()]
+  integrations: [react(), icon(), tailwind(), customToc(), mdx()]
 });
