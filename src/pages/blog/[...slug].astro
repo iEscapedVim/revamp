@@ -68,7 +68,6 @@ import Telegram from '@comps/share/Telegram.astro';
           <span class="text-2xl font-bold text-primary">Recent Posts</span>
         </h4>
         {allPosts.sort((a: { data: { pubDate: string | number | Date; }; }, b: { data: { pubDate: string | number | Date; }; }) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()).slice(0, 3).map((p: any) => <RecentCard post={p}/>)}
-        
       </div>
       <div class="py-3 px-2">
         <h4>
