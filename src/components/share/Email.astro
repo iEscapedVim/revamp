@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-const { url=Astro.request.url, title, description} = Astro.props;
+const { url, title, description} = Astro.props;
 let URL = `mailto:?subject=${title}&body=${description}%0A${url}`
 
 import Gmail from '@assets/share/gmail.png'

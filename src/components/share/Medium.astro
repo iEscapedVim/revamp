@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-const { url = Astro.request.url, title } = Astro.props;
+const { url, title } = Astro.props;
 let URL = `https://medium.com/new-story?url=${encodeURIComponent(url)}&title=${title}`
 
 import Me from '@assets/share/medium.png'

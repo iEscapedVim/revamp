@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-const { url=Astro.request.url} = Astro.props;
+const { url} = Astro.props;
 let URL = `https://www.facebook.com/sharer/sharer.php?u=${url}`
 
 import Face from '@assets/share/facebook.png'
