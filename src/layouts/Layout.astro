@@ -4,17 +4,10 @@ import Header from "@comps/header.astro"
 import Footer from "@comps/footer.astro"
 import Mcan from '@comps/mcan.tsx';
 import { NAME } from '@consts/consts';
-
-import { Seo } from "astro-seo-meta";
 ---
 <!doctype html>
 <html lang="en" class="overflow-x-hidden">
 	<Head sitetitle={NAME}> 
-		<Seo
-			title={NAME}
-			description="I'm a seasoned web developer and technical project lead with over 8 years of experience in crafting visually compelling, responsive, & functionally robust websites."
-			icon="/favicon.png"
-	  	/>
 	</Head>
 	<body class="bg-base-100">
 		<Mcan client:load />

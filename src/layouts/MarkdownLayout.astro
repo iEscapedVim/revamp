@@ -4,6 +4,10 @@ import Head from "@comps/head.astro"
 import Header from "@comps/header.astro"
 import Footer from "@comps/footer.astro"
 import Mcan from '@comps/mcan.tsx';
+import { Schema } from "astro-seo-schema"
+import { NAME, WEBSITE } from '@consts/consts';
+
+console.log(frontmatter)
 ---
 <!doctype html>
 <html lang="en" class="overflow-x-hidden">
@@ -26,6 +30,27 @@ import Mcan from '@comps/mcan.tsx';
 		<meta name="twitter:description" content={frontmatter.description}>
 		<meta name="twitter:image" content={frontmatter.image.src}>
 
+		<Schema
+			item={{
+				"@context": "https://schema.org",
+				"@type": "Article",
+				headline: frontmatter.title,
+				description: frontmatter.description,
+				image: frontmatter.image.src,
+				datePublished: frontmatter.date,
+				dateModified: frontmatter.date,
+				keywords: frontmatter.tags,
+				author: {
+					"@type": "Person",
+					name: NAME,
+					url: WEBSITE,
+				},
+				mainEntityOfPage: {
+					"@type": "WebPage",
+					"@id": WEBSITE,
+				},
+			}}
+		/>
 	</Head>
 	<body class="bg-base-100">
 		<Mcan client:load />
