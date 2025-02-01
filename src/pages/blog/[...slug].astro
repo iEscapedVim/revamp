@@ -22,8 +22,8 @@ import RecentProjects from '@comps/sidebar/recentCard.astro';
 const allPosts = await getCollection("blog");
 const allProjects = await getCollection("projects");
 
-const currentPageURL = Astro.request.url;
-
+const currentPageURL = Astro.url.href;
+console.log(Astro.url.href);
 import Email from "@comps/share/Email.astro";
 import Facebook from '@comps/share/Facebook.astro';
 import Twitter from '@comps/share/Twitter.astro';
