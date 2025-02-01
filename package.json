@@ -17,6 +17,7 @@
     "astro": "^5.2.1",
     "astro-custom-toc": "^2.0.40",
     "astro-icon": "^1.1.5",
+    "astro-seo-meta": "^5.1.0",
     "clsx": "^2.1.1",
     "embla-carousel": "^8.5.2",
     "embla-carousel-autoplay": "^8.5.2",

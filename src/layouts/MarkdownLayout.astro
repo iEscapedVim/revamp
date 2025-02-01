@@ -4,10 +4,18 @@ import Head from "@comps/head.astro"
 import Header from "@comps/header.astro"
 import Footer from "@comps/footer.astro"
 import Mcan from '@comps/mcan.tsx';
+
+import { Seo } from "astro-seo-meta"
 ---
 <!doctype html>
 <html lang="en" class="overflow-x-hidden">
-	<Head sitetitle={frontmatter.title} />
+	<Head sitetitle={frontmatter.title}> 
+		<Seo
+			title={frontmatter.title}
+			description={frontmatter.description}
+			icon="/favicon.png"
+	  	/>
+	</Head>
 	<body class="bg-base-100">
 		<Mcan client:load />
 		<Header />
