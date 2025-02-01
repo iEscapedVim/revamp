@@ -44,11 +44,6 @@ import Telegram from '@comps/share/Telegram.astro';
       <Content />
     </article>
     <div class="w-full flex flex-col gap-3 justify-center items-center py-4">
-        <div class="w-full flex flex-col gap-3 justify-center items-center pb-12">
-          <h1>The current URL is: {Astro.url}</h1>
-          <h1>The current URL pathname is: {Astro.url.pathname}</h1>
-          <h1>The current URL origin is: {Astro.url.origin}</h1>
-        </div>
         <div class="flex flex-row gap-3 justify-center items-center">
           <h3 class="text-2xl font-bold text-primary">Share:</h3>
           <Reddit url={currentPageURL} title={entry.data.title} description={entry.data.description} />
