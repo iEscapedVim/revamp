@@ -21,11 +21,6 @@ import RecentProjects from '@comps/sidebar/recentCard.astro';
 
 const allPosts = await getCollection("blog");
 const allProjects = await getCollection("projects");
-
-import Email from "@comps/social-share/Email.astro";
-import Facebook from "@comps/social-share/Facebook.astro";
-import LinkedIn from "@comps/social-share/LinkedIn.astro";
-import Whatsapp from "@comps/social-share/Whatsapp.astro";
 ---
 <Layout frontmatter={entry.data}>
   <div class="bg-white/40 backdrop-blur-[2px] shadow-md z-10 col-span-6 h-fit border-2 border-primary rounded-lg mb-12">
