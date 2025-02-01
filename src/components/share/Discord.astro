@@ -1,0 +1,9 @@
+---
+import { Image } from "astro:assets";
+const { url = Astro.request.url, title } = Astro.props;
+const discordShareURL = `https://discord.com/channels?guild_id=&channel_id=&content=${encodeURIComponent(url + " " + title)}`; // Correct for sharing links
+import DiscordIcon from '@assets/share/discord.png';
+---
+<a class="social-share-btn" target="_blank" href={discordShareURL} rel="noopener noreferrer">
+  <Image src={DiscordIcon} alt="Discord" class="w-7 h-auto hover:scale-125 transition-all duration-500" />
+</a>

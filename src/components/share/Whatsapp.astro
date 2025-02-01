@@ -1,0 +1,15 @@
+---
+import { Image } from "astro:assets";
+const { url=Astro.request.url, description, style} = Astro.props;
+
+let URL = `whatsapp://send?text=`;
+
+if (description) URL += `${description} `;
+URL += `${url}`;
+
+import Wha from '@assets/share/whatsapp.png'
+---
+
+<a class="social-share-btn" target="_blank" href={encodeURI(URL)} rel="noopener noreferrer" data-action="share/whatsapp/share" >
+  <Image src={Wha} alt="WhatsApp" class="w-8 h-auto hover:scale-125 transition-all duration-500" />
+</a>

@@ -21,6 +21,17 @@ import RecentProjects from '@comps/sidebar/recentCard.astro';
 
 const allPosts = await getCollection("blog");
 const allProjects = await getCollection("projects");
+
+const currentPageURL = Astro.request.url;
+
+import Email from "@comps/share/Email.astro";
+import Facebook from '@comps/share/Facebook.astro';
+import Twitter from '@comps/share/Twitter.astro';
+import Whatsapp from '@comps/share/Whatsapp.astro';
+import LinkedIn from "@comps/share/LinkedIn.astro";
+import Medium from '@comps/share/Medium.astro';
+import Reddit from '@comps/share/Reddit.astro';
+import Telegram from '@comps/share/Telegram.astro';
 ---
 <Layout frontmatter={entry.data}>
   <div class="bg-white/40 backdrop-blur-[2px] shadow-md z-10 col-span-6 h-fit border-2 border-primary rounded-lg mb-12">
@@ -35,7 +46,14 @@ const allProjects = await getCollection("projects");
     </article>
     <div class="w-full flex flex-row gap-3 justify-center items-center py-4">
       <h3 class="text-2xl font-bold text-primary">Share:</h3>
-      
+      <Reddit url={currentPageURL} title={entry.data.title} description={entry.data.description} />
+      <Facebook url={currentPageURL} title={entry.data.title} description={entry.data.description} />
+      <Twitter url={currentPageURL} title={entry.data.title} description={entry.data.description} />
+      <LinkedIn url={currentPageURL} title={entry.data.title} description={entry.data.description} />
+      <Medium url={currentPageURL} title={entry.data.title} description={entry.data.description} />
+      <Whatsapp url={currentPageURL} title={entry.data.title} description={entry.data.description} />
+      <Telegram url={currentPageURL} title={entry.data.title} description={entry.data.description} />
+      <Email url={currentPageURL} title={entry.data.title} description={entry.data.description} />
     </div>      
   </div>
   <div class="col-span-2 h-fit border-2 border-primary rounded-lg bg-white/40 backdrop-blur-[2px] shadow-md z-10">

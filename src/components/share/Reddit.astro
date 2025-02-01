@@ -1,0 +1,12 @@
+---
+import { Image } from "astro:assets";
+const { url=Astro.request.url, title } = Astro.props;
+
+const encoded_url = encodeURIComponent(url);
+let URL = `https://www.reddit.com/submit?url=${encoded_url}&title=${title}`
+
+import Reddi from '@assets/share/reddit.png'
+---
+<a class="social-share-btn" target="_blank" href={URL} rel="noopener noreferrer">
+  <Image src={Reddi} alt="Reddit" class="w-8 h-auto hover:scale-125 transition-all duration-500" />
+</a>
