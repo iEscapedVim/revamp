@@ -4,29 +4,28 @@ import Head from "@comps/head.astro"
 import Header from "@comps/header.astro"
 import Footer from "@comps/footer.astro"
 import Mcan from '@comps/mcan.tsx';
-
-import { Seo } from "astro-seo-meta"
 ---
 <!doctype html>
 <html lang="en" class="overflow-x-hidden">
 	<Head sitetitle={frontmatter.title}> 
-		<Seo
-			title={frontmatter.title}
-			description={frontmatter.description}
-			icon="/favicon.png"
-			keywords={frontmatter.tags}
-			colorScheme="light"
-  			robots="index, follow"
-			  facebook={{
-				image: frontmatter.image.src,
-				type: "article",
-			  }}
-			  twitter={{
-				image: frontmatter.image.src,
-				site: "@iEscapedVim",
-				card: "summary",
-			  }}
-	  	/>
+
+		<meta property="og:title" content={frontmatter.title} />
+		<meta property="og:type" content="article" />
+		<meta property="og:description"  content="Sean Connery found fame and fortune as the suave, sophisticated British agent, James Bond." />
+		<meta property="og:determiner" content="the" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:site_name" content={frontmatter.title} />
+		<meta property="og:image" content={frontmatter.image.src} />
+		<meta property="og:image:type" content="image/jpeg" />
+		<meta property="og:image:alt" content={frontmatter.imagealt} />
+
+		<!-- Twitter Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content={frontmatter.url}>
+		<meta name="twitter:title" content={frontmatter.title}>
+		<meta name="twitter:description" content={frontmatter.description}>
+		<meta name="twitter:image" content={frontmatter.image.src}>
+
 	</Head>
 	<body class="bg-base-100">
 		<Mcan client:load />
