@@ -6,6 +6,8 @@ import Footer from "@comps/footer.astro"
 import Mcan from '@comps/mcan.tsx';
 
 import { Seo } from "astro-seo-meta"
+
+console.log();
 ---
 <!doctype html>
 <html lang="en" class="overflow-x-hidden">
@@ -14,6 +16,18 @@ import { Seo } from "astro-seo-meta"
 			title={frontmatter.title}
 			description={frontmatter.description}
 			icon="/favicon.png"
+			keywords={frontmatter.tags}
+			colorScheme="light"
+  			robots="index, follow"
+			  facebook={{
+				image: frontmatter.image,
+				type: "article",
+			  }}
+			  twitter={{
+				image: frontmatter.image,
+				site: "@iEscapedVim",
+				card: "summary",
+			  }}
 	  	/>
 	</Head>
 	<body class="bg-base-100">
