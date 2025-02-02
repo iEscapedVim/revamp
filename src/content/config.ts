@@ -23,6 +23,9 @@ const blog = defineCollection({
 	  imagealt: z.string(),
       tags: z.array(z.string()),
 	  category: z.string().optional(),
+      // Shcema Options
+      supply: z.string().optional(), 
+      tools: z.string().optional(),
     })
 });
 

@@ -55,7 +55,7 @@ import Telegram from '@comps/share/Telegram.astro';
           <Telegram url={currentPageURL} title={entry.data.title} description={entry.data.description} />
           <Email url={currentPageURL} title={entry.data.title} description={entry.data.description} />
         </div>
-    </div>      
+    </div>
   </div>
   <div class="col-span-2 h-fit border-2 border-primary rounded-lg bg-white/40 backdrop-blur-[2px] shadow-md z-10">
       <div class="py-3 px-2">
@@ -71,4 +71,22 @@ import Telegram from '@comps/share/Telegram.astro';
         {allProjects.sort((a: { data: { pubDate: string | number | Date; }; }, b: { data: { pubDate: string | number | Date; }; }) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()).slice(0, 3).map((p: any) => <RecentProjects post={p}/>)}
       </div>
   </div>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript" define:vars={{ currentPageURL }}>
+    console.log(currentPageURL);
+    document.addEventListener('DOMContentLoaded', () => {  
+        var disqus_config = function () {
+        this.page.url = currentPageURL;  
+        this.page.identifier = currentPageURL;
+        };
+        
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://iescapedvim.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </Layout>
