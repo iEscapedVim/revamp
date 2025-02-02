@@ -2,7 +2,7 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SHORT_TITLE = 'IEV';
-export const SITE_DESCRIPTION = "I'm a seasoned web developer and technical project lead with over 8 years of experience in crafting visually compelling, responsive, & functionally robust websites.";
+export const ABOUT = "I'm a seasoned web developer and technical project lead with over 8 years of experience in crafting visually compelling, responsive, & functionally robust websites.";
 export const NAME = 'Yasir Rehman'
 export const ROLE = 'Web Developer'
 export const FULL_TITLE = 'iEscapedVim'
