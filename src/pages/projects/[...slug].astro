@@ -27,7 +27,7 @@ type Props = {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 const currentPageURL = Astro.url.href;
-import Contact from '@comps/contact.astro';
+import Contact from '@comps/sidebar/contact.astro';
 ---
 <Layout frontmatter={entry.data}>
 
