@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection("blog");
+const allTags = allPosts.map(post => post.data.tags).flat();
+
+// Count occurrences of each tag
+const tagCount = allTags.reduce((acc, tag) => {
+  acc[tag] = (acc[tag] || 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+// Convert to array of objects and sort by count
+const sortedTags = Object.entries(tagCount)
+  .map(([tag, count]) => ({ tag, count }))
+  .sort((a, b) => b.count - a.count);
+---
+<div class="flex flex-wrap gap-2">
+  {sortedTags.map(({ tag, count }) => (
+    <a href={`/tags/${tag.toLowerCase()}`} class="px-3 py-1 text-sm font-medium text-white bg-gradient-to-r from-primary to-secondary rounded-full hover:from-primary/90 hover:to-secondary/90 transition-all duration-300" >
+      {tag}
+      <span class="ml-1 text-xs">({count})</span>
+    </a>
+  ))}
+</div>

@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
+import RecentCard from '@comps/recentCardBlog.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("blog");
+  
+  // Get all unique tags
+  const allTags = [...new Set(allPosts.map(post => post.data.tags).flat())];
+  
+  return allTags.map(tag => ({
+    params: { slug: tag.toLowerCase() },
+    props: { 
+      tag,
+      posts: allPosts.filter(post => post.data.tags.includes(tag))
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+
+import Contact from '@comps/contact.astro';
+---
+
+<Layout>
+  <div class="py-12"></div>
+  <section class="flex flex-col w-[96%] h-fit bg-white/50 backdrop-blur-[2px] mx-auto rounded-2xl p-12 shadow-[inset_2px_2px_30px] shadow-secondary/30 border-2 border-secondary">
+    <h2 class="font-outfit font-bold text-4xl md:text-5xl lg:text-6xl text-neutral mt-2">
+      Tag: <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{tag}</span>
+    </h2>
+    <p class="text-primary mt-2">Found {posts.length} posts with this tag</p>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      {posts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+        .map((post) => <RecentCard post={post} />)}
+    </div>
+  </section>
+  <Contact />
+</Layout>
