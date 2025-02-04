@@ -14,7 +14,7 @@
     "@astrojs/tailwind": "^5.1.5",
     "@motionone/utils": "^10.18.0",
     "aos": "^2.3.4",
-    "astro": "^5.2.1",
+    "astro": "^5.2.4",
     "astro-custom-toc": "^2.0.40",
     "astro-icon": "^1.1.5",
     "astro-seo-schema": "^5.0.0",
