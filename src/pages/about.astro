@@ -5,9 +5,11 @@ import WhatIDo from '@comps/whatido.astro';
 import Timelist from '@/components/timelist.astro';
 import Testimonials from '@comps/testimonials.astro';
 import Contact from '@comps/contact.astro';
+
+import { FULL_TITLE } from '@/consts';
 ---
 
-<Layout>
+<Layout SiteTitle={"About Me | " + FULL_TITLE}>
     <AboutMe />
     <WhatIDo />
     <Timelist />

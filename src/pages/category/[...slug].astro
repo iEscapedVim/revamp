@@ -34,9 +34,11 @@ export async function getStaticPaths() {
 }
 
 const { category, posts } = Astro.props;
+
+import { FULL_TITLE } from '@/consts';
 ---
 
-<Layout>
+<Layout SiteTitle={"Blog Categories | " + FULL_TITLE}>
   <div class="py-12"></div>
   <section id="recent" class="flex flex-col w-[96%] h-fit bg-white/50 backdrop-blur-[2px] mx-auto rounded-2xl p-12 shadow-[inset_2px_2px_30px] shadow-secondary/30 border-2 border-secondary">
     <h2 class="font-outfit font-bold text-4xl md:text-5xl lg:text-6xl text-neutral mt-2">

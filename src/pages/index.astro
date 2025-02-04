@@ -6,9 +6,11 @@ import RecentProjects from '@comps/recentSection.astro';
 import RecentYappings from '@comps/recentSectionBlog.astro';
 import Testimonials from '@comps/testimonials.astro';
 import Contact from '@comps/contact.astro';
+
+import { FULL_TITLE, NAME } from '@/consts';
 ---
 
-<Layout>
+<Layout SiteTitle={NAME+" | "+FULL_TITLE}>
 	<Hero />
     <WhatIDo />
     <RecentProjects />

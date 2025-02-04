@@ -28,9 +28,11 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 const currentPageURL = Astro.url.href;
 import Contact from '@comps/sidebar/contact.astro';
----
-<Layout frontmatter={entry.data}>
 
+import { FULL_TITLE } from '@/consts';
+---
+
+<Layout frontmatter={entry.data} SiteTitle={entry.data.title}>
   <div class="col-span-1 h-fit flex justify-center relative">
     <div class="flex flex-col gap-3 bg-white/60 backdrop-blur-[2px] fixed border-2 border-primary rounded-lg p-3">
       <Reddit url={currentPageURL} title={entry.data.title} description={entry.data.description} />

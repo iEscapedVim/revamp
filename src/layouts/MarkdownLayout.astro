@@ -6,11 +6,12 @@ import Footer from "@comps/footer.astro"
 import Mcan from '@comps/mcan.tsx';
 import { Schema } from "astro-seo-schema"
 import { NAME, WEBSITE } from '@consts/consts';
+const { SiteTitle } = Astro.props;
 ---
 <!doctype html>
 <html lang="en" class="overflow-x-hidden">
-	<Head sitetitle={frontmatter.title}> 
-		<title>{frontmatter.title}</title>
+	<Head> 
+		<title>{SiteTitle}</title>
 
 		<meta property="og:title" content={frontmatter.title} />
 		<meta property="og:type" content="article" />

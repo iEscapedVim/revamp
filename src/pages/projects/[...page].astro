@@ -13,9 +13,11 @@ export async function getStaticPaths({ paginate }: { paginate: (posts: any[], op
 const { page }: any = Astro.props;
 
 import Contact from '@comps/contact.astro';
+
+import { FULL_TITLE } from '@/consts';
 ---
 
-<Layout>
+<Layout SiteTitle={"My Projects | " + FULL_TITLE}>
     <div class="py-12"></div>
     <section id="recent" class="flex flex-col w-[96%] h-fit bg-white/50 backdrop-blur-[2px] mx-auto rounded-2xl p-12 shadow-[inset_2px_2px_30px] shadow-secondary/30 border-2 border-secondary">
         <h2 transition:name="projectstitle" class="font-outfit font-bold text-4xl md:text-5xl lg:text-6xl text-neutral mt-2">My <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Projects</span></h2>
