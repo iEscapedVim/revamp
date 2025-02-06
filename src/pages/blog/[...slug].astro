@@ -48,9 +48,9 @@ import Contact from '@comps/sidebar/contact.astro';
   <div class="bg-white/60 backdrop-blur-[2px] shadow-md z-10 col-span-8 h-fit border-2 border-primary rounded-lg mb-3">
 
     <div class="w-full bg-cover bg-no-repeat relative">
-      <Image src={entry.data.image} alt={entry.data.title} class="w-full h-full rounded-xl object-cover" />
+      <Image src={entry.data.image} alt={entry.data.title} class="w-full h-full rounded-xl object-cover"  transition:name={entry.data.title+"'simage"}/>
       <span class="w-full h-1/4 absolute bottom-0 flex justify-center items-center bg-gradient-to-r from-primary/80 to-secondary/80 backdrop-blur-[2px]">
-        <h1 class="text-3xl font-bold text-white" transition:name="posttitle">{entry.data.title}</h1>
+        <h1 class="text-3xl font-bold text-white" transition:name={entry.data.title}>{entry.data.title}</h1>
       </span>
     </div>
     

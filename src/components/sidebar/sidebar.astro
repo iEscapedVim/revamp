@@ -10,6 +10,7 @@ const allPosts = await getCollection("blog");
 const allProjects = await getCollection("projects");
 ---
 <div class="col-span-2 h-fit">
+
     <div class="py-3 px-2 border-2 border-primary rounded-lg bg-white/40 backdrop-blur-[2px] shadow-md z-10 mb-8">
       <h4>
         <span class="text-2xl font-bold text-primary">Categories</span>
@@ -47,9 +48,9 @@ const allProjects = await getCollection("projects");
         <span class="text-2xl font-bold text-primary">About Author</span>
       </h4>
       <h5 class="font-bold text-secondary my-3 flex flex-col justify-center items-center">
-        <span class="unselectable font-bold stroke-text mx-auto text-4xl mb-3" transition:name="myname">{NAME}</span>
+        <span class="unselectable font-bold stroke-text mx-auto text-4xl mb-3">{NAME}</span>
       </h5>
-      <p class="text-sm text-gray-700" transition:name="shortdescription">
+      <p class="text-sm text-gray-700">
         {ABOUT}
       </p>
       <span class="flex flex-row gap-3 my-3">

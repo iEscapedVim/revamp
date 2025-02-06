@@ -4,27 +4,63 @@ import RecentCard from '@comps/recentCardBlog.astro';
 
 import { getCollection } from 'astro:content';
 
-
 export async function getStaticPaths({ paginate }: { paginate: (posts: any[], options: { pageSize: number }) => any }) {
     const allPosts = await getCollection("blog");
-    return paginate(allPosts, { pageSize: 10 });
+    return paginate(allPosts, { pageSize: 4 });
 }
 
 const { page }: any = Astro.props;
 
 import Contact from '@comps/contact.astro';
-import { FULL_TITLE } from '@/consts';
----
 
+import { NAME, ABOUT, FULL_TITLE } from '@/consts';
+
+import Tags from '@comps/sidebar/tags.astro';
+import Categories from '@comps/sidebar/categories.astro';
+---
 <Layout SiteTitle={"Blog | " + FULL_TITLE}>
     <div class="py-12"></div>
-    <section class="flex flex-col w-[96%] h-fit bg-white/50 backdrop-blur-[2px] mx-auto rounded-2xl p-12 shadow-[inset_2px_2px_30px] shadow-secondary/30 border-2 border-secondary">
-        <h2 transition:name="projectstitle" class="font-outfit font-bold text-4xl md:text-5xl lg:text-6xl text-neutral mt-2">My <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Blog Posts</span></h2>
-        <p transition:name="projectsdes" class="text-primary mt-2">All my yappings go here..</p>
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {page.data.sort((a: { data: { pubDate: string | number | Date; }; }, b: { data: { pubDate: string | number | Date; }; }) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()).map((p: any) => <RecentCard post={p}/>)}
+    <section class="grid grid-cols-8 gap-6">
+        <div class="col-span-6 ">
+
+          <div class="flex flex-col w-[96%] h-fit bg-white/50 backdrop-blur-[2px] mx-auto rounded-2xl p-12 shadow-[inset_2px_2px_30px] shadow-secondary/30 border-2 border-secondary">
+              <h2 class="font-outfit font-bold text-4xl md:text-5xl lg:text-6xl text-neutral mt-2">My <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Blog Posts</span></h2>
+              <p class="text-primary mt-2">All my yappings go here..</p>
+              <div class="flex flex-row mt-6"><span class="font-bold me-2">Recent Tags:</span> <Tags /></div>
+              <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12">
+                  {page.data.sort((a: { data: { pubDate: string | number | Date; }; }, b: { data: { pubDate: string | number | Date; }; }) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()).map((p: any) => <RecentCard post={p}/>)}
+              </div>
+          </div>
+
+        </div>
+        <div class="col-span-2 h-fit">
+
+          <div data-aos="fade-up" data-aos-duration="500" class="py-3 px-2 border-2 border-primary rounded-lg bg-white/40 backdrop-blur-[2px] shadow-md z-10 mb-8">
+            <h4>
+              <span class="text-2xl font-bold text-primary">Categories</span>
+            </h4>
+            <div class="mt-4">
+              <Categories />
+            </div>
+          </div>
+
+          <div data-aos="fade-up" data-aos-duration="800"  class="py-3 px-2 border-2 border-primary rounded-lg bg-white/40 backdrop-blur-[2px] shadow-md z-10 mb-8">
+              <h4>
+                <span class="text-2xl font-bold text-primary">About Author</span>
+              </h4>
+              <h5 class="font-bold text-secondary my-3 flex flex-col justify-center items-center">
+                <span class="unselectable font-bold stroke-text mx-auto text-4xl mb-3">{NAME}</span>
+              </h5>
+              <p class="text-sm text-gray-700">
+                {ABOUT}
+              </p>
+              <span class="flex flex-row gap-3 my-3">
+                <a href="/about" class="text-secondary underline font-semibold hover:no-underline">Learn More</a>
+              </span>
+          </div>
+        
         </div>
     </section>
-    <div class="pt-12"></div>
     <Contact />
+    <div class="pt-12"></div>
 </Layout>

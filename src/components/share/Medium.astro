@@ -6,5 +6,5 @@ let URL = `https://medium.com/new-story?url=${encodeURIComponent(url)}&title=${t
 import Me from '@assets/share/medium.png'
 ---
 <a class="social-share-btn" target="_blank" href={URL} rel="noopener noreferrer">
-  <Image src={Me} alt="Medium" class="w-7 h-auto hover:scale-125 transition-all duration-500" />
+  <Image loading="eager" src={Me} alt="Medium" class="w-7 h-auto hover:scale-125 transition-all duration-500" />
 </a>

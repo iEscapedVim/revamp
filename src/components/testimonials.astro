@@ -5,8 +5,7 @@ import TestimonialCard from "./testimonialCard.astro";
 ---
 <section class="bg-base-100">
     <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <h2 class="font-outfit font-bold text-4xl md:text-5xl lg:text-6xl text-neutral mt-2">Recent <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Testimonials</span></h2>
-  
+      <h2 class="font-outfit font-bold text-4xl md:text-5xl lg:text-6xl text-neutral mt-2">What My <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Clients Say</span></h2>
       <div class="mt-8 [column-fill:_balance] sm:columns-2 sm:gap-6 lg:columns-3 lg:gap-8">
         {allTestimonials.sort(() => Math.random() - 0.5).slice(0, 3).map((r: any) => <TestimonialCard reviews={r} />)}
       </div>

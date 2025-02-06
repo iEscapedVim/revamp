@@ -7,5 +7,5 @@ let URL = `mailto:?subject=${title}&body=${description}%0A${url}`
 import Gmail from '@assets/share/gmail.png'
 ---
 <a class="social-share-btn" target="_blank" href={URL} rel="noopener noreferrer">
-  <Image src={Gmail} alt="Email" class="w-8 h-auto hover:scale-125 transition-all duration-500" />
+  <Image loading="eager" src={Gmail} alt="Email" class="w-8 h-auto hover:scale-125 transition-all duration-500" />
 </a>
