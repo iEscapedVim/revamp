@@ -10,47 +10,47 @@ import Touch from './touch.astro';
     <div class="grid grid-cols-1 md:grid-cols-9 z-10 w-full h-fit px-12 justify-center items-center gap-6">
         <div class="order-2 md:order-1 col-span-3 flex flex-col gap-3 justify-start items-center md:mt-20 backdrop-blur-[2px]" transition:name="aboutmesection">
             <div data-aos="fade-up" data-aos-duration="500" class="w-full flex flex-col gap-3 bg-gradient-to-r from-primary/80 to-secondary/90 py-3 px-6 rounded-lg backdrop-blur-lg border-2 border-gray-300">
-                <h3 class="text-white text-2xl font-bold">
+                <h1 class="text-white text-2xl font-bold">
                     About Me
-                </h3>
+                </h1>
                 <p class="text-white text-sm font-medium">
                     I'm a seasoned web developer and technical project lead with over 8 years of experience in crafting visually compelling, responsive, & functionally robust websites.
                 </p>
             </div>
             <div data-aos="fade-up" data-aos-duration="800" class="w-full flex flex-col gap-3 bg-gradient-to-r from-primary/80 to-secondary/90 py-3 px-6 rounded-lg border-2 border-gray-300">
-            <h3 class="text-white text-2xl font-bold">
+            <h2 class="text-white text-2xl font-bold">
                 Connect
-            </h3>
+            </h2>
             <span class="text-white text-3xl font-bold flex flex-row gap-3">
                 <Touch />
             </span>
             </div>
         </div>
-        <Image src={Me} alt={"Me, " + NAME} class="order-1 md:order-2 col-span-3 w-64 mx-auto md:w-96 bg-gradient-to-b from-primary/70 to-secondary/60 h-auto rounded-full backdrop-blur-[2px]" transition:name='myface' />
+        <Image loading="eager" src={Me} alt={"Me, " + NAME} class="order-1 md:order-2 col-span-3 w-64 mx-auto md:w-96 bg-gradient-to-b from-primary/70 to-secondary/60 h-auto rounded-full backdrop-blur-[2px]" transition:name='myface' />
         <div id="stats" class="order-3 col-span-3 flex flex-col gap-3 justify-start items-center md:mt-44 backdrop-blur-[2px]">
             <div data-aos-anchor="#stats" data-aos="fade-up" data-aos-duration="500" class="w-full flex flex-col gap-3 bg-gradient-to-r from-primary/80 to-secondary/90 py-3 px-6 rounded-lg border-2 border-gray-300">
-                <h3 class="text-white text-2xl font-bold">
+                <h2 class="text-white text-2xl font-bold">
                     Project Done
-                </h3>
-                <h5 class="text-white text-3xl font-bold">
+                </h2>
+                <p class="text-white text-3xl font-bold">
                     437
-                </h5>
+                </p>
             </div>
             <div data-aos-anchor="#stats" data-aos="fade-up" data-aos-duration="800" class="w-full flex flex-col gap-3 bg-gradient-to-r from-primary/80 to-secondary/90 py-3 px-6 rounded-lg  border-2 border-gray-300">
-                <h3 class="text-white text-2xl font-bold">
+                <h2 class="text-white text-2xl font-bold">
                     Years of Experience
-                </h3>
-                <h5 class="text-white text-3xl font-bold">
+                </h2>
+                <p class="text-white text-3xl font-bold">
                     8+
-                </h5>
+                </p>
             </div>
             <div data-aos-anchor="#stats" data-aos="fade-up" data-aos-duration="1100" class="w-full flex flex-col gap-3 bg-gradient-to-r from-primary/80 to-secondary/90 py-3 px-6 rounded-lg border-2 border-gray-300">
-                <h3 class="text-white text-2xl font-bold">
+                <h2 class="text-white text-2xl font-bold">
                     Clients WorldWide
-                </h3>
-                <h5 class="text-white text-3xl font-bold">
+                </h2>
+                <p class="text-white text-3xl font-bold">
                     300+
-                </h5>
+                </p>
             </div>
         </div>
     </div>
