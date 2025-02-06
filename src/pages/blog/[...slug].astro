@@ -32,7 +32,7 @@ import Contact from '@comps/sidebar/contact.astro';
 ---
 <Layout frontmatter={entry.data} SiteTitle={entry.data.title}>
 
-  <div class="col-span-1 h-fit flex justify-center relative">
+  <div class="col-span-1 h-fit hidden md:flex justify-center relative">
     <div class="flex flex-col gap-3 bg-white/60 backdrop-blur-[2px] fixed border-2 border-primary rounded-lg p-3">
       <Reddit url={currentPageURL} title={entry.data.title} description={entry.data.description} />
       <Facebook url={currentPageURL} title={entry.data.title} description={entry.data.description} />
@@ -45,7 +45,7 @@ import Contact from '@comps/sidebar/contact.astro';
     </div>
   </div>
 
-  <div class="bg-white/60 backdrop-blur-[2px] shadow-md z-10 col-span-8 h-fit border-2 border-primary rounded-lg mb-3">
+  <div class="bg-white/60 backdrop-blur-[2px] shadow-md z-10 col-span-12 md:col-span-8 h-fit border-2 border-primary rounded-lg mb-3">
 
     <div class="w-full bg-cover bg-no-repeat relative">
       <Image src={entry.data.image} alt={entry.data.title} class="w-full h-full rounded-xl object-cover"  transition:name={entry.data.title+"'simage"}/>
@@ -54,7 +54,7 @@ import Contact from '@comps/sidebar/contact.astro';
       </span>
     </div>
     
-    <div class="flex flex-row justify-between items-center pt-4 px-4">
+    <div class="flex flex-col md:flex-row justify-between items-center pt-4 px-4">
       <time datetime={entry.data.pubDate.toISOString()} class="text-sm text-primary font-bold">
         Posted on: 
         <span class="font-normal text-gray-700">
@@ -94,7 +94,7 @@ import Contact from '@comps/sidebar/contact.astro';
 
   </div>
 
-  <div class="col-span-3 h-fit">
+  <div class="col-span-12 md:col-span-3 h-fit">
     <Sidebar />
   </div>
 

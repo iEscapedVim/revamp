@@ -20,10 +20,10 @@ import Categories from '@comps/sidebar/categories.astro';
 ---
 <Layout SiteTitle={"Blog | " + FULL_TITLE}>
     <div class="py-12"></div>
-    <section class="grid grid-cols-8 gap-6">
-        <div class="col-span-6 ">
+    <section class="grid grid-cols-1 md:grid-cols-8 gap-6 mx-6">
+        <div class="col-span-1 md:col-span-6 ">
 
-          <div class="flex flex-col w-[96%] h-fit bg-white/50 backdrop-blur-[2px] mx-auto rounded-2xl p-12 shadow-[inset_2px_2px_30px] shadow-secondary/30 border-2 border-secondary">
+          <div class="flex flex-col w-full h-fit bg-white/50 backdrop-blur-[2px] mx-auto rounded-2xl p-12 shadow-[inset_2px_2px_30px] shadow-secondary/30 border-2 border-secondary">
               <h2 class="font-outfit font-bold text-4xl md:text-5xl lg:text-6xl text-neutral mt-2">My <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Blog Posts</span></h2>
               <p class="text-primary mt-2">All my yappings go here..</p>
               <div class="flex flex-row mt-6"><span class="font-bold me-2">Recent Tags:</span> <Tags /></div>
@@ -33,7 +33,7 @@ import Categories from '@comps/sidebar/categories.astro';
           </div>
 
         </div>
-        <div class="col-span-2 h-fit">
+        <div class="col-span-1 md:col-span-2 h-fit">
 
           <div data-aos="fade-up" data-aos-duration="500" class="py-3 px-2 border-2 border-primary rounded-lg bg-white/40 backdrop-blur-[2px] shadow-md z-10 mb-8">
             <h4>

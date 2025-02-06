@@ -6,12 +6,12 @@ import Name from '@comps/code.jsx'
 import Touch from './touch.astro';
 ---
 <section class='flex flex-col justify-center items-center relative py-24'>
-    <div class="grid grid-cols-7 w-full h-fit px-12 justify-center items-center z-10 gap-3">
-        <Image loading="eager" src={Me} alt={NAME} class="col-span-2 w-44 md:w-96 bg-gradient-to-b from-primary/70 to-secondary/60 h-auto rounded-full backdrop-blur-[2px]" transition:name='myface' />
+    <div class="grid grid-cols-1 md:grid-cols-7 w-full h-fit px-4 md:px-12 justify-center items-center z-10 gap-3">
+        <Image loading="eager" src={Me} alt={NAME} class="col-span-2 flex mx-auto w-44 md:w-96 bg-gradient-to-b from-primary/70 to-secondary/60 h-auto rounded-full backdrop-blur-[2px]" transition:name='myface' />
         <div class="relative bg-white/60 py-3 rounded-lg border-2 border-primary backdrop-blur-sm text-start px-12 w-fit h-full col-span-5" transition:name="aboutmesection">
             <h1 class='font-outfit font-bold text-4xl md:text-5xl text-neutral lg:text-6xl mt-2'>About <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Me</span></h1>
             <div class='text-xl font-medium pt-2 text-neutral flex flex-col gap-5'>   
-                <span class="flex flex-row">My name is <p class="ms-2 font-bold text-secondary" transition:name="myname"> {NAME}</p></span>
+                <p class="mt-2 -mb-4">My name is <span class="font-bold text-secondary" transition:name="myname"> {NAME}</span></p>
                 <p> I'm a seasoned web developer and technical project lead with over 8 years of experience in crafting visually compelling, responsive, & functionally robust websites. Outside of work, I enjoy cooking/exploring new recipes, some photography, watching anime/discovering new series, & spending time with my feline friends.</p>
                 <span data-aos="fade-up" data-aos-duration="500">
                     <ul class="text-lg font-medium list-disc ms-4 marker:text-secondary text-neutral">
