@@ -10,6 +10,6 @@ import customToc from 'astro-custom-toc';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://new.iescapedvim.com',
+  site: 'https://iescapedvim.com',
   integrations: [react(), icon(), tailwind(), customToc(), mdx()]
 });
