@@ -1,0 +1,20 @@
+---
+const { href, aos, aosd, aosan, text, class: className } = Astro.props;
+---
+<a href={href} class:list={["button", className]} data-aos={aos} data-aos-duration={aosd} data-aos-anchor={aosan} >
+    <div class="points_wrapper">
+      <i class="point"></i>
+      <i class="point"></i>
+      <i class="point"></i>
+      <i class="point"></i>
+      <i class="point"></i>
+      <i class="point"></i>
+      <i class="point"></i>
+      <i class="point"></i>
+      <i class="point"></i>
+      <i class="point"></i>
+    </div>
+    <span class="inner">
+        {text}
+    </span>
+</a>

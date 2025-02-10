@@ -12,32 +12,46 @@ import Touch from "./touch.astro"
             </p>
             <div>
               <label class="sr-only" for="name">Name</label>
-              <input class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Name" type="text" name="name" />
+              <input required class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Name" type="text" name="name" />
             </div>
   
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label class="sr-only" for="email">Email</label>
-                <input class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Email address" type="email" name="email" />
+                <input required class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Email address" type="email" name="email" />
               </div>
   
               <div>
                 <label class="sr-only" for="phone">Phone</label>
-                <input class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Phone Number" type="tel" name="phone" pattern="\+?[0-9\s()-]{7,15}" />
+                <input required class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Phone Number" type="tel" name="phone" pattern="\+?[0-9\s()-]{7,15}" />
               </div>
             </div>
   
             <div>
               <label class="sr-only" for="message">Message</label>
-              <textarea class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Message" rows="8" name="message" ></textarea>
+              <textarea required class="w-full rounded-lg border-secondary border-2 p-3 text-sm ring-0 hover:ring-0 outline-0 hover:outline-0 hover:shadow-lg focus:shadow-lg bg-white/80" placeholder="Message" rows="8" name="message" ></textarea>
             </div>
 
             <input type="hidden" name="_next" value="https://iescapedvim.com/#contact">
   
             <div class="mt-4">
-              <button type="submit" class="inline-block w-full rounded-lg bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 border-2 border-gray-300 font-bold px-5 py-3 text-white sm:w-auto" >
-                Send Enquiry
-              </button>
+              <button type="submit" class="button">
+                <div class="points_wrapper">
+                  <i class="point"></i>
+                  <i class="point"></i>
+                  <i class="point"></i>
+                  <i class="point"></i>
+                  <i class="point"></i>
+                  <i class="point"></i>
+                  <i class="point"></i>
+                  <i class="point"></i>
+                  <i class="point"></i>
+                  <i class="point"></i>
+                </div>
+                <span class="inner">
+                    Send Message
+                </span>
+              </button>  
             </div>
           </form>
         </div>

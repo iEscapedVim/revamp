@@ -2,6 +2,7 @@
 import RecentCard from '@comps/recentCard.astro'
 import { getCollection } from 'astro:content';
 const allPosts = await getCollection("projects");
+import Button from '@comps/button.astro';
 ---
 <section class="flex flex-col w-[96%] h-fit bg-white/60 backdrop-blur-[2px] mx-auto rounded-2xl p-12 shadow-[inset_2px_2px_50px] shadow-secondary/30 border-2 border-secondary">
     <h2 class="font-outfit font-bold text-4xl md:text-5xl lg:text-6xl text-neutral mt-2">Recent <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Projects</span></h2>
@@ -9,5 +10,5 @@ const allPosts = await getCollection("projects");
     <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12" transition:name="projectslist">
         {allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()).map((p: any) => <RecentCard post={p}/>)}
     </div>
-    <a href="/projects" class="mx-auto font-bold mt-8 text-white bg-gradient-to-r from-primary to-secondary py-2 px-5 border border-gray-100 rounded-full hover:bg-gradient-to-tr transition-all duration-500" data-aos="fade-up" data-aos-duration="1500" data-aos-anchor="recent">View All</a>
+    <Button class="mt-8 w-44 mx-auto" href="/projects" text="View All" aos="fade-up" aosd="1500" aosan="recent" />
 </section>
