@@ -1,6 +1,17 @@
+<noscript>
+    <style>
+        [data-aos] {
+            opacity: 1 !important;
+            transform: translateZ(0) !important;
+        }
+    </style>
+</noscript>
 <script>
-    import AOS from "aos";
-    document.addEventListener('astro:page-load', () => {
-      AOS.init();
-    });
+    function initAOS() {
+        import("aos").then((AOS) => {
+            AOS.init();
+        });
+    }
+    document.addEventListener('astro:page-load', initAOS);
+    window.addEventListener('load', initAOS);
 </script>
