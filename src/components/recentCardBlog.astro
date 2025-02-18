@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets"
 const { post } = Astro.props;
-const {title, description, image, imagealt, pubDate, category} = post.data;
+const {title, description, image, imagealt, pubDate, category, published} = post.data;
 
 const date = new Date(pubDate);
 const year = date.getFullYear();
@@ -9,22 +9,23 @@ const month = date.toLocaleString('en-US', { month: 'short' });
 const day = date.getDate();
 const formattedDate = `${day} ${month}`;
 ---
-
-<a href={`/blog/${post.slug}/`} class="group bg-gradient-to-t from-primary to-secondary hover:from-primary/90 hover:to-secondary relative rounded-2xl border" data-aos="fade-up" data-aos-duration="1000">
-  <div class='relative p-2 text-white'>
-    <div class='p-2'>
-      <Image loading="lazy" src={image} alt={imagealt} class="rounded-2xl w-[325px] h-auto" transition:name={title+"image"} />
-      <span class='text-lg inline-block px-2 font-semibold pt-2 text-slate-200 mb-1 transition-all duration-500 ease-in-out relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 dark:after:bg-white 
-      after:bg-transparent after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] group-hover:after:origin-bottom-left group-hover:after:scale-x-100'>
-        {title}
-      </span>
-      <p class='text-sm text-white px-2 pb-3'>
-        {description.slice(0, 70) + "..." }
-      </p>
+{published && (
+  <a href={`/blog/${post.slug}/`} class="group bg-gradient-to-t from-primary to-secondary hover:from-primary/90 hover:to-secondary relative rounded-2xl border" data-aos="fade-up" data-aos-duration="1000">
+    <div class='relative p-2 text-white flex flex-col'>
+      <div class='p-2'>
+        <Image loading="lazy" src={image} alt={imagealt} class="rounded-2xl w-[425px] h-52" transition:name={title+"image"} />
+        <span class='text-lg inline-block px-2 font-semibold pt-2 text-slate-200 mb-1 transition-all duration-500 ease-in-out relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 dark:after:bg-white 
+        after:bg-transparent after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] group-hover:after:origin-bottom-left group-hover:after:scale-x-100'>
+          {title}
+        </span>
+        <p class='text-sm text-white px-2 pb-3'>
+          {description.slice(0, 70) + "..." }
+        </p>
+      </div>
+      <div class="flex flex-row text-sm justify-between px-4">
+        <time datetime={pubDate} >{formattedDate}, {year}</time>
+        <span>{category}</span>
+      </div>
     </div>
-    <div class="flex flex-row text-sm justify-between px-4">
-      <time datetime={pubDate} >{formattedDate}, {year}</time>
-      <span>{category}</span>
-    </div>
-  </div>
-</a>
+  </a>
+)}

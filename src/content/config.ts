@@ -24,6 +24,7 @@ const blog = defineCollection({
 	    imagealt: z.string(),
       tags: z.array(z.string()),
 	    category: z.enum(["Design", "Development", "Marketing", "Technology", "PHP", "WordPress", "Internet", "AstroJS", "Shopify", "Linux", "Other"]).optional(),
+      published: z.boolean(),
       // Shcema Options
       supply: z.string().optional(), 
       tools: z.string().optional(),

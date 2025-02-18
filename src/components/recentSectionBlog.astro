@@ -9,7 +9,12 @@ import Button from '@comps/button.astro';
     <h2 class="font-outfit font-bold text-4xl md:text-5xl lg:text-6xl text-neutral mt-2">Recent <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Posts</span></h2>
     <p class="text-primary">These are my most recent yappings...</p>
     <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-        {allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()).map((p: any) => <RecentCard post={p}/>)}
+        {allPosts
+            .sort((a, b) => new Date(b.data.pubDate)
+            .getTime() - new Date(a.data.pubDate).getTime())
+            .map((p: any) => 
+            <RecentCard post={p}/>
+        )}
     </div>
     <Button class="mt-8 w-44 mx-auto" href="/blog" text="View All" aos="fade-up" aosd="1500" aosan="recent" />
 </section>

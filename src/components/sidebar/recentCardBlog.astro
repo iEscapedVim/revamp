@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets"
 const { post } = Astro.props;
-const {title, description, image, imagealt, pubDate, category} = post.data;
+const {title, description, image, imagealt, pubDate, category, published} = post.data;
 
 const date = new Date(pubDate);
 const year = date.getFullYear();
@@ -9,6 +9,7 @@ const month = date.toLocaleString('en-US', { month: 'short' });
 const day = date.getDate();
 const formattedDate = `${day} ${month}`;
 ---
+{published && (
 <a href={`/blog/${post.slug}/`} class="group relative rounded-2xl border" data-aos="fade-up" data-aos-duration="1000">
   <div class='relative p-2 text-gray-700'>
     <div class='p-2'>
@@ -27,3 +28,4 @@ const formattedDate = `${day} ${month}`;
     </div>
   </div>
 </a>
+)}
