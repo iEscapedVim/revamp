@@ -15,7 +15,7 @@ const { SiteTitle } = Astro.props;
 
 		<meta property="og:title" content={frontmatter.title} />
 		<meta property="og:type" content="article" />
-		<meta property="og:description"  content="Sean Connery found fame and fortune as the suave, sophisticated British agent, James Bond." />
+		<meta property="og:description"  content={frontmatter.description} />
 		<meta property="og:determiner" content="the" />
 		<meta property="og:locale" content="en_US" />
 		<meta property="og:site_name" content={frontmatter.title} />
@@ -40,15 +40,6 @@ const { SiteTitle } = Astro.props;
 				datePublished: frontmatter.date,
 				dateModified: frontmatter.date,
 				keywords: frontmatter.tags,
-				author: {
-					"@type": "Person",
-					name: NAME,
-					url: WEBSITE,
-				},
-				mainEntityOfPage: {
-					"@type": "WebPage",
-					"@id": WEBSITE,
-				},
 			}}
 		/>
 	</Head>
