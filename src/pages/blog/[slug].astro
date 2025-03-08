@@ -48,19 +48,21 @@ import Reddit from '@comps/share/Reddit.astro';
 import Telegram from '@comps/share/Telegram.astro';
 const currentPageURL = Astro.url.href;
 import { Image } from "astro:assets";
+
+const postExcerpt = post.excerpt.replace(/<p>/g, '').replace(/<\/p>/g, '');
 ---
-<Layout SiteTitle={post.title + " | " + FULL_TITLE} postTitle={post.title} postDescription={post.description} postImage={post.featuredImage?.node?.sourceUrl || 'https://placehold.co/550x300?text=No+Feaured+Image'} publishDate={post.date} modifiedDate={post.modified} postSlug={post.slug}>
+<Layout SiteTitle={post.title + " | " + FULL_TITLE} postTitle={post.title} postDescription={postExcerpt} postImage={post.featuredImage?.node?.sourceUrl || 'https://placehold.co/550x300?text=No+Feaured+Image'} publishDate={post.date} modifiedDate={post.modified} postSlug={post.slug}>
 
   <div class="col-span-1 h-fit md:flex justify-center relative hidden">
     <div class="flex flex-col gap-3 bg-white/60 backdrop-blur-[2px] fixed border-2 border-primary rounded-lg p-3">
-      <Reddit url={currentPageURL} title={post.title} description={post.description} />
-      <Facebook url={currentPageURL} title={post.title} description={post.description} />
-      <Twitter url={currentPageURL} title={post.title} description={post.description} />
-      <LinkedIn url={currentPageURL} title={post.title} description={post.description} />
-      <Medium url={currentPageURL} title={post.title} description={post.description} />
-      <Whatsapp url={currentPageURL} title={post.title} description={post.description} />
-      <Telegram url={currentPageURL} title={post.title} description={post.description} />
-      <Email url={currentPageURL} title={post.title} description={post.description} />
+      <Reddit url={currentPageURL} title={post.title} description={postExcerpt} />
+      <Facebook url={currentPageURL} title={post.title} description={postExcerpt} />
+      <Twitter url={currentPageURL} title={post.title} description={postExcerpt} />
+      <LinkedIn url={currentPageURL} title={post.title} description={postExcerpt} />
+      <Medium url={currentPageURL} title={post.title} description={postExcerpt} />
+      <Whatsapp url={currentPageURL} title={post.title} description={postExcerpt} />
+      <Telegram url={currentPageURL} title={post.title} description={postExcerpt} />
+      <Email url={currentPageURL} title={post.title} description={postExcerpt} />
     </div>
   </div>
 
@@ -114,14 +116,14 @@ import { Image } from "astro:assets";
     <div class="w-full flex flex-col gap-3 justify-center items-center py-4">
       <div class="flex flex-row gap-3 justify-center items-center">
         <h3 class="text-2xl font-bold text-primary">Share:</h3>
-        <Reddit url={currentPageURL} title={post.title} description={post.description} />
-        <Facebook url={currentPageURL} title={post.title} description={post.description} />
-        <Twitter url={currentPageURL} title={post.title} description={post.description} />
-        <LinkedIn url={currentPageURL} title={post.title} description={post.description} />
-        <Medium url={currentPageURL} title={post.title} description={post.description} />
-        <Whatsapp url={currentPageURL} title={post.title} description={post.description} />
-        <Telegram url={currentPageURL} title={post.title} description={post.description} />
-        <Email url={currentPageURL} title={post.title} description={post.description} />
+        <Reddit url={currentPageURL} title={post.title} description={postExcerpt} />
+        <Facebook url={currentPageURL} title={post.title} description={postExcerpt} />
+        <Twitter url={currentPageURL} title={post.title} description={postExcerpt} />
+        <LinkedIn url={currentPageURL} title={post.title} description={postExcerpt} />
+        <Medium url={currentPageURL} title={post.title} description={postExcerpt} />
+        <Whatsapp url={currentPageURL} title={post.title} description={postExcerpt} />
+        <Telegram url={currentPageURL} title={post.title} description={postExcerpt} />
+        <Email url={currentPageURL} title={post.title} description={postExcerpt} />
       </div>
     </div>
 
