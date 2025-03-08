@@ -24,6 +24,8 @@
     "embla-carousel-class-names": "^8.5.2",
     "embla-carousel-react": "^8.5.2",
     "framer-motion": "^11.18.2",
+    "graphql": "^16.8.1",
+    "graphql-request": "^6.1.0",
     "lenis": "^1.2.3",
     "schema-dts": "^1.1.2",
     "tailwind-merge": "^2.6.0",

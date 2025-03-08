@@ -1,41 +1,150 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '@layouts/Layout.astro';
-import RecentCard from '@comps/recentCardBlog.astro';
+import Sidebar from '@comps/sidebar/sidebar.astro';
+import Layout from '@layouts/MarkdownLayout.astro';
+import { getPost, getPosts } from '@/lib/wordpress';
+import { FULL_TITLE } from '@/consts';
+import { extractHeadings, addIdsToHeadings } from '@/lib/toc';
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection("blog");
-  
-  // Get all unique tags
-  const allTags = [...new Set(allPosts.map(post => post.data.tags).flat())];
-  
-  return allTags.map(tag => ({
-    params: { slug: tag.toLowerCase() },
-    props: { 
-      tag,
-      posts: allPosts.filter(post => post.data.tags.includes(tag))
-    },
+  const posts = await getPosts();
+  return posts.map((post: any) => ({
+    params: { slug: post.slug },
   }));
 }
 
-const { tag, posts } = Astro.props;
+const { slug } = Astro.params;
+const post = await getPost(slug);
 
-import Contact from '@comps/contact.astro';
+if (!post) {
+  return Astro.redirect('/404');
+}
 
-import { FULL_TITLE } from '@/consts';
+const date = new Date(post.date);
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const modifiedDate = new Date(post.modified);
+const formattedModifiedDate = modifiedDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const isModified = date.getTime() !== modifiedDate.getTime();
+
+const headings = extractHeadings(post.content);
+const contentWithIds = addIdsToHeadings(post.content);
+
+import Email from "@comps/share/Email.astro";
+import Facebook from '@comps/share/Facebook.astro';
+import Twitter from '@comps/share/Twitter.astro';
+import Whatsapp from '@comps/share/Whatsapp.astro';
+import LinkedIn from "@comps/share/LinkedIn.astro";
+import Medium from '@comps/share/Medium.astro';
+import Reddit from '@comps/share/Reddit.astro';
+import Telegram from '@comps/share/Telegram.astro';
+const currentPageURL = Astro.url.href;
+import { Image } from "astro:assets";
 ---
+<Layout SiteTitle={post.title + " | " + FULL_TITLE} postTitle={post.title} postDescription={post.description} postImage={post.featuredImage?.node?.sourceUrl || 'https://placehold.co/550x300?text=No+Feaured+Image'} publishDate={post.date} modifiedDate={post.modified} postSlug={post.slug}>
 
-<Layout SiteTitle={"Blog Tags | " + FULL_TITLE}>
-  <div class="py-12"></div>
-  <section class="flex flex-col w-[96%] h-fit bg-white/50 backdrop-blur-[2px] mx-auto rounded-2xl p-12 shadow-[inset_2px_2px_30px] shadow-secondary/30 border-2 border-secondary">
-    <h2 class="font-outfit font-bold text-4xl md:text-5xl lg:text-6xl text-neutral mt-2">
-      Tag: <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{tag}</span>
-    </h2>
-    <p class="text-primary mt-2">Found {posts.length} posts with this tag</p>
-    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-      {posts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
-        .map((post) => <RecentCard post={post} />)}
+  <div class="col-span-1 h-fit md:flex justify-center relative hidden">
+    <div class="flex flex-col gap-3 bg-white/60 backdrop-blur-[2px] fixed border-2 border-primary rounded-lg p-3">
+      <Reddit url={currentPageURL} title={post.title} description={post.description} />
+      <Facebook url={currentPageURL} title={post.title} description={post.description} />
+      <Twitter url={currentPageURL} title={post.title} description={post.description} />
+      <LinkedIn url={currentPageURL} title={post.title} description={post.description} />
+      <Medium url={currentPageURL} title={post.title} description={post.description} />
+      <Whatsapp url={currentPageURL} title={post.title} description={post.description} />
+      <Telegram url={currentPageURL} title={post.title} description={post.description} />
+      <Email url={currentPageURL} title={post.title} description={post.description} />
     </div>
-  </section>
-  <Contact />
+  </div>
+
+  <div class="bg-white/60 backdrop-blur-[2px] shadow-md z-10 col-span-12 md:col-span-8 h-fit border-2 border-primary rounded-lg mb-3">
+
+    <div class="w-full bg-cover bg-no-repeat relative">
+      <Image src={post.featuredImage?.node?.sourceUrl || 'https://placehold.co/550x300?text=No+Feaured+Image'} alt={post.featuredImage?.node?.altText || post.title} class="w-full h-full object-cover" width={550} height={300} />
+      <span class="w-full h-24 md:h-32 px-6 absolute bottom-0 flex justify-center items-center bg-gradient-to-r from-primary/80 to-secondary/80 backdrop-blur-[2px]">
+        <h1 class="text-xl md:text-3xl font-bold text-white">{post.title}</h1>
+      </span>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-between items-center pt-4 px-4">
+      <time datetime={post.date} class="text-sm text-primary font-bold">
+        Posted on: 
+        <span class="font-normal text-gray-700">
+          {formattedDate}
+        </span>
+      </time>
+      
+      {isModified && (
+        <time datetime={post.modified} class="text-sm text-primary font-bold">
+          Modified on: 
+          <span class="font-normal text-gray-700">
+            {formattedModifiedDate}
+          </span>
+        </time>
+      )}
+    </div>
+
+    {headings.length > 0 && (
+      <div class="mx-6 my-8 p-6 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg border border-primary/20">
+        <h2 class="text-2xl font-bold text-primary mb-4">Table of Contents</h2>
+        <nav class="toc">
+          <ul class="space-y-2 list-disc ms-8">
+            {headings.map((heading) => (
+              <li class={`ml-${(heading.level - 1) * 4}`}>
+                <a href={`#${heading.id}`} class="text-gray-700 hover:text-primary hover:underline transition-colors duration-200">
+                  {heading.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    )}
+
+    <article class="w-full px-6 py-6 prose-lg prose-headings:font-bold prose-headings:my-3 prose-headings:text-primary prose-p:text-gray-700 prose-img:rounded-xl prose-ul:[list-style-type:disc] prose-ol:[list-style-type:decimal] prose-strong:text-primary" set:html={contentWithIds}>
+    </article>
+
+    <div class="w-full flex flex-col gap-3 justify-center items-center py-4">
+      <div class="flex flex-row gap-3 justify-center items-center">
+        <h3 class="text-2xl font-bold text-primary">Share:</h3>
+        <Reddit url={currentPageURL} title={post.title} description={post.description} />
+        <Facebook url={currentPageURL} title={post.title} description={post.description} />
+        <Twitter url={currentPageURL} title={post.title} description={post.description} />
+        <LinkedIn url={currentPageURL} title={post.title} description={post.description} />
+        <Medium url={currentPageURL} title={post.title} description={post.description} />
+        <Whatsapp url={currentPageURL} title={post.title} description={post.description} />
+        <Telegram url={currentPageURL} title={post.title} description={post.description} />
+        <Email url={currentPageURL} title={post.title} description={post.description} />
+      </div>
+    </div>
+
+    <div id="disqus_thread" class="p-12"></div>
+
+  </div>
+
+  <div class="col-span-12 md:col-span-3 h-fit">
+    <Sidebar />
+  </div>
+
+  <script type="text/javascript" define:vars={{ currentPageURL }}>
+    var disqus_config = function () {
+    this.page.url = currentPageURL;  
+    this.page.identifier = currentPageURL;
+    };
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://iescapedvim.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </Layout>
