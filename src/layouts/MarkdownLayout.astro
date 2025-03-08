@@ -5,12 +5,13 @@ import Header from "@comps/header.astro"
 import Footer from "@comps/footer.astro"
 import Mcan from '@comps/mcan.tsx';
 import { Schema } from "astro-seo-schema"
-const { SiteTitle, postTitle, postDescription, postImage, publishDate, modifiedDate, postSlug} = Astro.props;
+const { postTitle, postDescription, postImage, publishDate, modifiedDate, postSlug} = Astro.props;
+console.log(postDescription);
 ---
 <!doctype html>
 <html lang="en" class="overflow-x-hidden">
 	<Head> 
-		<title>{SiteTitle}</title>
+		<title>{postTitle}</title>
 
 		<meta property="og:title" content={postTitle} />
 		<meta property="og:type" content="article" />
