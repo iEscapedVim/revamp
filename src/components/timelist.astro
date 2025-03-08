@@ -1,11 +1,7 @@
 ---
 import TLC from "./tlistcard.astro"
+import Stacking from "@comps/core/stacking.tsx";
 ---
 <section class="w-full h-fit flex justify-center items-center">
-    <ul role="list" class="m-8 max-w-screen-md">
-        <TLC dataaos="flip-right" aosduration="800" year="2016-2017" title="Web Design Bootcamp" description="Completed a comprehensive web design crash course at TNA, gaining proficiency in HTML, CSS, JavaScript, and the conversion of PSD designs into HTML." />
-        <TLC dataaos="flip-right" aosduration="1200" year="2019-2021" title="High School Degree" description="Completed High School At AIOU Pakistan." />
-        <TLC dataaos="flip-right" aosduration="1500" year="2020-2024" title="Arox Marketing" description="Led project execution at Arox Technologies, assigning tasks to team members and monitoring progress to ensure successful delivery." />
-        <TLC dataaos="flip-right" aosduration="1800" year="2017-Present" title="Freelancer" description="Leveraged freelance platforms and direct client relationships to deliver web design solutions to a diverse range of clientele." />
-    </ul>  
+    <Stacking />
 </section>
