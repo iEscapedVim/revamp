@@ -55,21 +55,21 @@ const postExcerpt = post.excerpt.replace(/<p>/g, '').replace(/<\/p>/g, '');
 
   <div class="col-span-1 h-fit md:flex justify-center relative hidden">
     <div class="flex flex-col gap-3 bg-white/60 backdrop-blur-[2px] fixed border-2 border-primary rounded-lg p-3">
-      <Reddit url={currentPageURL} title={post.title} description={postExcerpt} />
-      <Facebook url={currentPageURL} title={post.title} description={postExcerpt} />
-      <Twitter url={currentPageURL} title={post.title} description={postExcerpt} />
-      <LinkedIn url={currentPageURL} title={post.title} description={postExcerpt} />
-      <Medium url={currentPageURL} title={post.title} description={postExcerpt} />
-      <Whatsapp url={currentPageURL} title={post.title} description={postExcerpt} />
-      <Telegram url={currentPageURL} title={post.title} description={postExcerpt} />
-      <Email url={currentPageURL} title={post.title} description={postExcerpt} />
+      <Reddit url={currentPageURL} title={post.title} description={postExcerpt} loading="eager" />
+      <Facebook url={currentPageURL} title={post.title} description={postExcerpt} loading="eager" />
+      <Twitter url={currentPageURL} title={post.title} description={postExcerpt} loading="eager" />
+      <LinkedIn url={currentPageURL} title={post.title} description={postExcerpt} loading="eager" />
+      <Medium url={currentPageURL} title={post.title} description={postExcerpt} loading="eager" />
+      <Whatsapp url={currentPageURL} title={post.title} description={postExcerpt} loading="eager" />
+      <Telegram url={currentPageURL} title={post.title} description={postExcerpt} loading="eager" />
+      <Email url={currentPageURL} title={post.title} description={postExcerpt} loading="eager" />
     </div>
   </div>
 
   <div class="bg-white/60 backdrop-blur-[2px] shadow-md z-10 col-span-12 md:col-span-8 h-fit border-2 border-primary rounded-lg mb-3">
 
     <div class="w-full bg-cover bg-no-repeat relative">
-      <Image src={post.featuredImage?.node?.sourceUrl || 'https://placehold.co/550x300?text=No+Feaured+Image'} alt={post.featuredImage?.node?.altText || post.title} class="w-full h-full object-cover" width={550} height={300} />
+      <Image loading={"eager"} src={post.featuredImage?.node?.sourceUrl || 'https://placehold.co/550x300?text=No+Feaured+Image'} alt={post.featuredImage?.node?.altText || post.title} class="w-full h-full object-cover" width={550} height={300} />
       <span class="w-full h-24 md:h-32 px-6 absolute bottom-0 flex justify-center items-center bg-gradient-to-r from-primary/80 to-secondary/80 backdrop-blur-[2px]">
         <h1 class="text-xl md:text-3xl font-bold text-white">{post.title}</h1>
       </span>
@@ -116,14 +116,14 @@ const postExcerpt = post.excerpt.replace(/<p>/g, '').replace(/<\/p>/g, '');
     <div class="w-full flex flex-col gap-3 justify-center items-center py-4">
       <div class="flex flex-row gap-3 justify-center items-center">
         <h3 class="text-2xl font-bold text-primary">Share:</h3>
-        <Reddit url={currentPageURL} title={post.title} description={postExcerpt} />
-        <Facebook url={currentPageURL} title={post.title} description={postExcerpt} />
-        <Twitter url={currentPageURL} title={post.title} description={postExcerpt} />
-        <LinkedIn url={currentPageURL} title={post.title} description={postExcerpt} />
-        <Medium url={currentPageURL} title={post.title} description={postExcerpt} />
-        <Whatsapp url={currentPageURL} title={post.title} description={postExcerpt} />
-        <Telegram url={currentPageURL} title={post.title} description={postExcerpt} />
-        <Email url={currentPageURL} title={post.title} description={postExcerpt} />
+        <Reddit url={currentPageURL} title={post.title} description={postExcerpt} loading="lazy" />
+        <Facebook url={currentPageURL} title={post.title} description={postExcerpt} loading="lazy" />
+        <Twitter url={currentPageURL} title={post.title} description={postExcerpt} loading="lazy" />
+        <LinkedIn url={currentPageURL} title={post.title} description={postExcerpt} loading="lazy" />
+        <Medium url={currentPageURL} title={post.title} description={postExcerpt} loading="lazy" />
+        <Whatsapp url={currentPageURL} title={post.title} description={postExcerpt} loading="lazy" />
+        <Telegram url={currentPageURL} title={post.title} description={postExcerpt} loading="lazy" />
+        <Email url={currentPageURL} title={post.title} description={postExcerpt} loading="lazy" />
       </div>
     </div>
 
@@ -136,17 +136,47 @@ const postExcerpt = post.excerpt.replace(/<p>/g, '').replace(/<\/p>/g, '');
   </div>
 
   <script type="text/javascript" define:vars={{ currentPageURL }}>
-    var disqus_config = function () {
-    this.page.url = currentPageURL;  
-    this.page.identifier = currentPageURL;
-    };
-    
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://iescapedvim.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
+    function loadDisqus() {
+      var disqus_config = function () {
+        this.page.url = currentPageURL;  
+        this.page.identifier = currentPageURL;
+      };
+  
+      (function() {
+        if (document.getElementById('disqus_thread').innerHTML) return; // Prevent duplicate loads
+        var d = document, s = d.createElement('script');
+        s.src = 'https://iescapedvim.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    }
+  
+    // Initial placeholder
+    document.getElementById('disqus_thread').innerHTML = '<p>Loading comments...</p>';
+  
+    // Load Disqus when the user scrolls near the comments section
+    let disqusLoaded = false;
+    function handleScroll() {
+      const disqusThread = document.getElementById('disqus_thread');
+      if (disqusThread && !disqusLoaded && isElementInViewport(disqusThread)) {
+        loadDisqus();
+        disqusLoaded = true;
+        window.removeEventListener('scroll', handleScroll);
+      }
+    }
+  
+    function isElementInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+  
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on initial load if it is already in view
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </Layout>

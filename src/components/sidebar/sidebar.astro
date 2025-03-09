@@ -11,6 +11,21 @@ const allProjects = await getCollection("projects");
 ---
 <div class="col-span-2 h-fit">
 
+  <div class="py-3 px-2 border-2 border-primary rounded-lg bg-white/40 backdrop-blur-[2px] shadow-md z-10 mb-8">
+    <h4>
+      <span class="text-2xl font-bold text-primary">About Author</span>
+    </h4>
+    <h5 class="font-bold text-secondary my-3 flex flex-col justify-center items-center">
+      <span class="unselectable font-bold stroke-text mx-auto text-4xl mb-3">{NAME}</span>
+    </h5>
+    <p class="text-sm text-gray-700">
+      {ABOUT}
+    </p>
+    <span class="flex flex-row gap-3 my-3">
+      <a href="/about" class="text-secondary underline font-semibold hover:no-underline">Learn More</a>
+    </span>
+  </div>
+
     <div class="py-3 px-2 border-2 border-primary rounded-lg bg-white/40 backdrop-blur-[2px] shadow-md z-10 mb-8">
       <h4>
         <span class="text-2xl font-bold text-primary">Categories</span>
@@ -33,7 +48,7 @@ const allProjects = await getCollection("projects");
       <h4>
         <span class="text-2xl font-bold text-primary">Recent Posts</span>
       </h4>
-      {allPosts.sort((a: { data: { pubDate: string | number | Date; }; }, b: { data: { pubDate: string | number | Date; }; }) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()).slice(0, 3).map((p: any) => <RecentCard post={p}/>)}
+      <RecentCard />
     </div>
 
     <div class="py-3 px-2 border-2 border-primary rounded-lg bg-white/40 backdrop-blur-[2px] shadow-md z-10 mb-8">
@@ -43,18 +58,4 @@ const allProjects = await getCollection("projects");
       {allProjects.sort((a: { data: { pubDate: string | number | Date; }; }, b: { data: { pubDate: string | number | Date; }; }) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()).slice(0, 3).map((p: any) => <RecentProjects post={p}/>)}
     </div>
 
-    <div class="py-3 px-2 border-2 border-primary rounded-lg bg-white/40 backdrop-blur-[2px] shadow-md z-10 mb-8">
-      <h4>
-        <span class="text-2xl font-bold text-primary">About Author</span>
-      </h4>
-      <h5 class="font-bold text-secondary my-3 flex flex-col justify-center items-center">
-        <span class="unselectable font-bold stroke-text mx-auto text-4xl mb-3">{NAME}</span>
-      </h5>
-      <p class="text-sm text-gray-700">
-        {ABOUT}
-      </p>
-      <span class="flex flex-row gap-3 my-3">
-        <a href="/about" class="text-secondary underline font-semibold hover:no-underline">Learn More</a>
-      </span>
-    </div>
   </div>

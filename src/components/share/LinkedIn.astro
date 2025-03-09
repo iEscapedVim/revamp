@@ -1,11 +1,11 @@
 ---
 import { Image } from "astro:assets";
 
-const { url } = Astro.props;
+const { url, loading } = Astro.props;
 let URL = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`
 
 import Linked from '@assets/share/linkedin.png'
 ---
 <a class="social-share-btn" target="_blank" href={URL} rel="noopener noreferrer">
-  <Image loading="eager" src={Linked} alt="Linkedin" class="w-8 h-auto hover:scale-125 transition-all duration-500" />
+  <Image loading={loading} src={Linked} alt="Linkedin" class="w-8 h-auto hover:scale-125 transition-all duration-500" />
 </a>

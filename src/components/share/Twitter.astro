@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-const { url, description, via} = Astro.props;
+const { url, description, via, loading} = Astro.props;
 
 let URL = `https://x.com/intent/tweet?url=${url}`
 
@@ -10,5 +10,5 @@ if (via) URL += `&via=${via}`
 import Twit from '@assets/share/twitter.png'
 ---
 <a class="social-share-btn" target="_blank" href={URL} rel="noopener noreferrer">
-  <Image loading="eager" src={Twit} alt="Twitter" class="w-8 h-auto hover:scale-125 transition-all duration-500" />
+  <Image loading={loading} src={Twit} alt="Twitter" class="w-8 h-auto hover:scale-125 transition-all duration-500" />
 </a>

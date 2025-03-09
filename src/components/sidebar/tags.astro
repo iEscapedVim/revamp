@@ -1,23 +1,15 @@
 ---
-import { getCollection } from 'astro:content';
+import { getTags } from '@/lib/wordpress';
 
-const allPosts = await getCollection("blog", ({ data }) => data.published === true);
-const allTags = allPosts.map(post => post.data.tags).flat();
+const tags: { name: string; count: number }[] = await getTags();
 
-// Count occurrences of each tag
-const tagCount = allTags.reduce((acc, tag) => {
-  acc[tag] = (acc[tag] || 0) + 1;
-  return acc;
-}, {} as Record<string, number>);
-// Convert to array of objects and sort by count
-const sortedTags = Object.entries(tagCount)
-  .map(([tag, count]) => ({ tag, count }))
-  .sort((a, b) => b.count - a.count);
+// Sort tags by count
+const sortedTags = tags.sort((a: { count: number; }, b: { count: number; }) => b.count - a.count);
 ---
 <div class="flex flex-wrap gap-2">
-  {sortedTags.map(({ tag, count }) => (
-    <a href={`/tags/${tag.toLowerCase()}`} class="px-3 py-1 text-sm font-medium text-white bg-gradient-to-r from-primary to-secondary rounded-full hover:from-primary/90 hover:to-secondary/90 transition-all duration-300" >
-      {tag}
+  {sortedTags.map(({ name, count }) => (
+    <a href={`/tags/${name.toLowerCase()}`} class="px-3 py-1 text-sm font-medium text-white bg-gradient-to-r from-primary to-secondary rounded-full hover:from-primary/90 hover:to-secondary/90 transition-all duration-300" >
+      {name}
       <span class="ml-1 text-xs">({count})</span>
     </a>
   ))}

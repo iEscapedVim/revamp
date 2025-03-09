@@ -1,42 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCategories } from '@/lib/wordpress';
 
-const allPosts = await getCollection("blog", ({ data }) => data.published === true);
+const categories: { name: string; count: number }[] = await getCategories();
 
-// Get all possible categories from the enum in the config
-const categories = [
-  "Design",
-  "Development",
-  "Marketing",
-  "Technology",
-  "PHP",
-  "WordPress",
-  "Internet",
-  "AstroJS",
-  "Shopify",
-  "Linux",
-  "Other"
-] as const;
-
-// Count posts for each category
-const categoryCount = categories.reduce((acc, category) => {
-  const count = allPosts.filter(post => post.data.category === category).length;
-  if (count > 0) {
-    acc[category] = count;
-  }
-  return acc;
-}, {} as Record<string, number>);
-
-// Convert to array and sort by count
-const sortedCategories = Object.entries(categoryCount)
-  .map(([category, count]) => ({ category, count }))
-  .sort((a, b) => b.count - a.count);
+// Sort categories by count
+const sortedCategories = categories.sort((a, b) => b.count - a.count);
 ---
 
 <div class="flex flex-col gap-2">
-  {sortedCategories.map(({ category, count }) => (
-    <a href={`/category/${category.toLowerCase()}`} class="group border-2 border-primary flex justify-between items-center px-4 py-2 text-sm font-medium text-primary hover:text-white bg-white/50 hover:bg-gradient-to-r hover:from-primary hover:to-secondary rounded-lg transition-all duration-300">
-      <span>{category}</span>
+  {sortedCategories.map(({ name, count }) => (
+    <a href={`/category/${name.toLowerCase()}`} class="group border-2 border-primary flex justify-between items-center px-4 py-2 text-sm font-medium text-primary hover:text-white bg-white/50 hover:bg-gradient-to-r hover:from-primary hover:to-secondary rounded-lg transition-all duration-300">
+      <span>{name}</span>
       <span class="px-2 py-1 text-xs bg-gradient-to-r from-primary to-secondary text-white rounded-full group-hover:from-white group-hover:to-white group-hover:text-primary">
         {count}
       </span>

@@ -1,11 +1,11 @@
 ---
 import { Image } from "astro:assets";
 
-const { url} = Astro.props;
+const { url, loading} = Astro.props;
 let URL = `https://www.facebook.com/sharer/sharer.php?u=${url}`
 
 import Face from '@assets/share/facebook.png'
 ---
 <a class="social-share-btn" target="_blank" href={URL} rel="noopener noreferrer">
-  <Image loading="eager" src={Face} alt="Facebook" class="w-8 h-auto hover:scale-125 transition-all duration-500" />
+  <Image loading={loading} src={Face} alt="Facebook" class="w-8 h-auto hover:scale-125 transition-all duration-500" />
 </a>

@@ -2,7 +2,13 @@ import { GraphQLClient } from 'graphql-request';
 
 const endpoint = 'https://posts.pocforum.org/stories';
 
-export const graphQLClient = new GraphQLClient(endpoint);
+export const graphQLClient = new GraphQLClient(endpoint, {
+  timeout: 30000, // 30 second timeout
+  retry: {
+    retries: 3,
+    initialDelay: 1000
+  }
+});
 
 export async function getPosts() {
   const query = `
@@ -21,6 +27,11 @@ export async function getPosts() {
             }
           }
           categories {
+            nodes {
+              name
+            }
+          }
+          tags {
             nodes {
               name
             }
@@ -60,6 +71,11 @@ export async function getPost(slug: string) {
             name
           }
         }
+        tags {
+          nodes {
+            name
+          }
+        }
       }
     }
   `;
@@ -70,5 +86,47 @@ export async function getPost(slug: string) {
   } catch (error) {
     console.error('Error fetching post:', error);
     return null;
+  }
+}
+
+export async function getCategories() {
+  const query = `
+    query GetCategories {
+      categories {
+        nodes {
+          name
+          count
+        }
+      }
+    }
+  `;
+
+  try {
+    const data = await graphQLClient.request(query);
+    return data.categories.nodes;
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    return [];
+  }
+}
+
+export async function getTags() {
+  const query = `
+    query GetTags {
+      tags {
+        nodes {
+          name
+          count
+        }
+      }
+    }
+  `;
+
+  try {
+    const data = await graphQLClient.request(query);
+    return data.tags.nodes;
+  } catch (error) {
+    console.error('Error fetching tags:', error);
+    return [];
   }
 }
